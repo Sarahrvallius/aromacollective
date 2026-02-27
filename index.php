@@ -62,7 +62,7 @@ require_once 'db.php';
     .card-custom:hover {
         transform: translateY(-5px);
     }
-</style>
+</style>assets
 
 <body>
     <?php include 'includes/header.php'; ?> <!-- Inkluderar header -->
