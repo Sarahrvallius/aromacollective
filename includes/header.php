@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #F2F1EE; border-bottom: 2px solid #AE9074; padding: 1rem 0;">
         <div class="container">
             <a class="navbar-brand" href="index.php" style="font-family: 'Bodoni Moda', serif; color: #7E1A01; font-weight: 800; letter-spacing: 2px; font-size: 1.5rem;">
-                AROMAS COLLECTIVE
+                AROMA COLLECTIVE hihih
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
