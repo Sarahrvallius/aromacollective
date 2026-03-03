@@ -16,5 +16,6 @@ require_once 'db.php';
 </head>
 
 <a href="signup.php">Join us</a>
+<a href="signin.php">Sign in</a>
 
 </html>
