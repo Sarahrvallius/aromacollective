@@ -1,5 +1,4 @@
 <?php
-require_once 'db.php'; // inkluderar databasuppkoppling
 require_once 'assets/includes/header.php'; //includes header    
 ?>
 

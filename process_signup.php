@@ -1,6 +1,6 @@
 <?php
-// 1. Inkluderar databasuppkoppling (här skapas $dbh)
-require_once 'db.php';
+// 1. Inkluderar databasuppkoppling
+require_once 'assets/config/db.php';
 
 // Kontrollera om formuläret har skickats
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
