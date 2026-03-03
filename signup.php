@@ -63,7 +63,7 @@ require_once 'db.php';
                                 <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
                             </div>
 
-                            <button type="submit" class="btn w-100 py-3 fw-bold text-uppercase shadow-sm" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0;">
+                            <button type="submit" class="btn w-100 py-3 fw-bold text-uppercase" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0;">
                                 Create account
                             </button>
 
