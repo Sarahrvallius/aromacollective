@@ -15,6 +15,6 @@ require_once 'db.php';
     <link rel="stylesheet" href="assets/css/style.css"> <!-- vår egen css -->
 </head>
 
-
+<a href="signup.php">Join us</a>
 
 </html>
