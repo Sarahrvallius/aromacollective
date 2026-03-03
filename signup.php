@@ -3,20 +3,9 @@
 require_once 'db.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aroma Collective</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"> <!-- Länk till CSS-fil -->
-    <link rel="stylesheet" href="assets/css/all.min.css"> <!-- ikoner -->
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- vår egen css -->
-</head>
 
 
-<body class="bg-light">
+<main class="bg-light">
 
     <div class="container">
         <div class="row min-vh-100 justify-content-center align-items-center py-5">
@@ -86,6 +75,8 @@ require_once 'db.php';
         </div>
     </div>
 
-</body>
+</main>
 
-</html>
+<?php
+require_once 'assets/includes/footer.php'; //includes footer
+?>

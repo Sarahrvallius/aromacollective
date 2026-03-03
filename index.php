@@ -1,21 +1,18 @@
 <?php
-// inkluderar databasuppkoppling
-require_once 'db.php';
+require_once 'db.php'; // inkluderar databasuppkoppling
+require_once 'assets/includes/header.php'; //includes header
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<main>
+    <p> Här skriver vi html-kodning för index-sidan. </p>
+    <il>
+        <ul> <a href="signup.php">Join us</a> </ul> <!-- link to sign up page -->
+        <ul> <a href="signin.php">Sign in</a> </ul> <!-- link to regerstration page -->
+        <ul> <a href="library.php"> Parfumes </a> </ul> <!-- link to library page -->
+        <ul> <a href="about.php">About us</a> </ul> <!-- link to about page -->
+    </il>
+</main>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aroma Collective</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"> <!-- Länk till CSS-fil -->
-    <link rel="stylesheet" href="assets/css/all.min.css"> <!-- ikoner -->
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- vår egen css -->
-</head>
-
-<a href="signup.php">Join us</a>
-<a href="signin.php">Sign in</a>
-
-</html>
+<?php
+require_once 'assets/includes/footer.php'; //includes footer
+?>

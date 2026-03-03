@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once 'db.php'; // inkluderar databasuppkoppling
+require_once 'assets/includes/header.php'; //includes header    
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragrance Library | Aromas Collective</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
-</head>
+<main>
+    Här skriver vi html-kodning för library-sidan.
+</main>
 
-
-
-</html>
+<?php
+require_once 'assets/includes/footer.php'; //includes footer
+?>

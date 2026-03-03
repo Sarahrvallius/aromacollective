@@ -1,0 +1,11 @@
+/* General styles */
+html, body {
+    height: 100%;
+}
+
+main { 
+    min-height: calc(100vh - 5rem);
+}
+
+/* Footer */
+footer { height: 5rem; }
