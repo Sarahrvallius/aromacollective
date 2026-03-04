@@ -1,11 +1,35 @@
 /* General styles */
-html, body {
+html,
+body {
     height: 100%;
 }
 
-main { 
+main {
     min-height: calc(100vh - 5rem);
 }
 
 /* Footer */
-footer { height: 5rem; }
+footer {
+    height: 5rem;
+}
+
+
+/*Background color*/
+.bg-offwhite {
+    background-color: #F2F1EE;
+}
+
+.bg-red {
+    background-color: #681018;
+}
+
+.bg-beige {
+    background-color: #DEC2A2;
+}
+
+/*Font styles*/
+h1,
+h2,
+h3 {
+    font-family: 'Bodoni Moda', serif;
+}
