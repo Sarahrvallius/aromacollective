@@ -1,7 +1,10 @@
-/* General styles */
+/* ======================================
+   BAS
+====================================== */
 html,
 body {
     height: 100%;
+<<<<<<< HEAD
 }
 
 main {
@@ -77,10 +80,14 @@ a {
 
 html, body {
     height: 100%;
+=======
+    margin: 0;
+    padding: 0;
+>>>>>>> a0ea14d (Css ändringar)
 }
 
 body {
-    background: #F2F1ED;
+    background-color: #F2F1EE;
     color: #161616;
 }
 
@@ -93,19 +100,8 @@ footer {
 }
 
 /* ======================================
-   TYPOGRAFI
+   FÄRGER
 ====================================== */
-
-h1,
-h2,
-h3 {
-    font-family: 'Bodoni Moda', serif;
-}
-
-/* ======================================
-   BAKGRUNDSFÄRGER
-====================================== */
-
 .bg-offwhite {
     background-color: #F2F1EE;
 }
@@ -115,221 +111,266 @@ h3 {
 }
 
 .bg-beige {
-    background-color: #B38F6F;
+    background-color: #DEC2A2;
 }
 
 /* ======================================
-   HERO SECTION
+   TYPOGRAFI
 ====================================== */
-
-.hero {
-    position: relative;
-    min-height: 420px;
-    background: #161616;
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Bodoni Moda', serif;
 }
 
-.hero-placeholder {
-    height: 420px;
-    background: #161616;
+p,
+a,
+li,
+span,
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    line-height: 1.1;
+}
+
+.section-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 320px;
+}
+
+/* ======================================
+   HERO
+====================================== */
+.hero {
+    position: relative;
+    min-height: 540px;
+    overflow: hidden;
+}
+
+.hero-image-placeholder {
+    width: 100%;
+    height: 540px;
+    background-color: #1f1f1f;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-
-    padding: 2rem;
-    color: white;
+    align-items: center;
+    padding: 4rem 6rem;
 }
 
 .hero-card {
-    max-width: 360px;
-    text-align: center;
+    max-width: 340px;
+    color: #fff;
+    text-align: left;
 }
 
-/* Hero-knapp färgfix */
-
-.hero .btn {
+.hero-small {
+    font-size: 1rem;
+    line-height: 1.5;
     color: #fff;
-    text-decoration: none;
 }
 
-.hero .btn:visited {
-    color: #fff;
+.placeholder-text,
+.placeholder-text-dark {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.placeholder-text {
+    color: rgba(255,255,255,0.7);
+}
+
+.placeholder-text-dark {
+    color: rgba(0,0,0,0.5);
 }
 
 /* ======================================
    HOW IT WORKS
 ====================================== */
-
 .how-step {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     align-items: flex-start;
 }
 
+.how-step p {
+    margin: 0;
+    line-height: 1.5;
+}
+
 .how-icon {
-
-    width: 44px;
-    height: 44px;
-
-    border: 1px solid rgba(0,0,0,.25);
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border: 1px solid rgba(0,0,0,0.25);
     border-radius: 50%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 1rem;
+    font-weight: 600;
 }
 
 /* ======================================
-   TRENDING SECTION
+   TRENDING
 ====================================== */
-
 .trending-section {
-    background: #710014;
-    color: white;
+    background-color: #710014;
 }
-
-/* Parfym placeholder */
 
 .product-placeholder {
-
-    height: 220px;
     width: 100%;
-    max-width: 360px;
-
+    max-width: 220px;
+    height: 260px;
     margin: 0 auto;
-
-    background: white;
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 4px;
 }
 
-/* Parfymnamn */
-
 .product-name {
-    margin-top: .75rem;
-    font-size: .9rem;
+    margin-top: 1rem;
+    color: #F2F1EE;
+    font-size: 0.95rem;
     letter-spacing: 1px;
-    color: rgba(242,241,237,.95);
+}
+
+.trending-link {
+    color: #F2F1EE;
+    text-decoration: none;
+}
+
+.trending-link:hover {
+    color: #F2F1EE;
+    text-decoration: underline;
 }
 
 /* ======================================
-   COMMUNITY VOICES
+   COMMUNITY
 ====================================== */
-
 .community-section {
-    background: #F2F1ED;
-    padding-top: 6rem;
-    padding-bottom: 5rem;
+    background-color: #F2F1EE;
 }
 
-/* Rubrik */
-
-.community-title__text {
-    margin: 0;
-    font-size: 2.2rem;
-}
-
-/* Linje under rubriken */
-
-.community-title__line {
-    width: 100%;
-    height: 1px;
-    background: rgba(22,22,22,.35);
-    margin-top: 1rem;
-}
-
-/* Citatkort */
-
-.quote-card {
-
-    background: #710014;
-    color: #F2F1ED;
-
-    padding: 2.6rem;
-
-    min-height: 380px;
-
+.community-left {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    min-height: 620px;
+    background-color: #F2F1EE;
 }
 
-.quote-card__text {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0;
+.community-content {
+    max-width: 620px;
+    padding: 5rem 3rem;
+    margin: 0 auto;
 }
 
-.quote-card__meta {
-    opacity: .85;
+.community-title {
+    font-size: 2.4rem;
     margin-bottom: 1rem;
 }
 
-/* Bildkort */
-
-.community-image {
-    background: #161616;
-    min-height: 380px;
+.community-line {
+    width: 100%;
+    max-width: 420px;
+    height: 1px;
+    background-color: rgba(0,0,0,0.25);
 }
 
-/* Prickar under citat */
+.community-quote {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.7rem;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 620px;
+}
+
+.community-meta {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: rgba(0,0,0,0.75);
+}
+
+.community-image-placeholder {
+    min-height: 620px;
+    background-color: #1b1b1b;
+}
 
 .quote-dots {
     display: flex;
-    justify-content: center;
-    gap: .5rem;
+    gap: 0.8rem;
 }
 
 .dot {
-
-    width: 10px;
-    height: 10px;
-
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-
-    background: rgba(242,241,237,.35);
+    background: rgba(0,0,0,0.25);
 }
 
 .dot.active {
-    background: rgba(242,241,237,.9);
+    background: rgba(0,0,0,0.85);
 }
 
 /* ======================================
-   BEIGE AVSKILJARE + RÖD FOOTER
+   BEIGE BLOCK
 ====================================== */
-
-.section-divider {
-    height: 60px;
-    background: #F2F1ED;
-}
-
-.bottom-red {
-    height: 160px;
-    background: #710014;
+.beige-block {
+    height: 180px;
 }
 
 /* ======================================
-   PLACEHOLDERS
+   PROFILE
 ====================================== */
-
-.placeholder-hero {
-    height: 420px;
-    background: #161616;
+.profile-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 }
 
-.placeholder-perfume {
-    height: 220px;
-    background: white;
+.profile-bio {
+    max-width: 450px;
 }
 
+<<<<<<< HEAD
 .placeholder-portrait {
     min-height: 360px;
     background: #161616;
 >>>>>>> d4ab788 (Satt grunden för index sidan med en header och en footer. Ändrade även lite i css filen för att få en bättre design på sidan.)
+=======
+/* ======================================
+   RESPONSIVE
+====================================== */
+@media (max-width: 991px) {
+    .hero-overlay {
+        justify-content: center;
+        align-items: flex-end;
+        padding: 2rem;
+    }
+
+    .hero-card {
+        text-align: center;
+    }
+
+    .community-left,
+    .community-image-placeholder {
+        min-height: auto;
+    }
+
+    .community-content {
+        padding: 4rem 2rem;
+    }
+
+    .community-quote {
+        font-size: 1.4rem;
+        line-height: 1.7;
+    }
+>>>>>>> a0ea14d (Css ändringar)
 }
