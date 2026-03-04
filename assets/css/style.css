@@ -4,7 +4,6 @@
 html,
 body {
     height: 100%;
-<<<<<<< HEAD
 }
 
 main {
@@ -57,7 +56,7 @@ a {
 /*Profile - Bio width*/
 .profile-bio {
     max-width: 450px;
-<<<<<<< HEAD
+
 }
 
 /*Reviews - Paragraph width*/
@@ -73,17 +72,13 @@ a {
 /*Top notes section - fixed height*/
 .top-notes-row {
     height: 450px;
-=======
+
 }/* ======================================
    GRUNDLÄGGANDE SIDSTILAR
 ====================================== */
 
 html, body {
     height: 100%;
-=======
-    margin: 0;
-    padding: 0;
->>>>>>> a0ea14d (Css ändringar)
 }
 
 body {
@@ -129,9 +124,8 @@ a,
 li,
 span,
 button {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Bodoni Moda', serif;
 }
-
 .section-title {
     font-size: 2.2rem;
     line-height: 1.1;
@@ -186,11 +180,11 @@ button {
 }
 
 .placeholder-text {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .placeholder-text-dark {
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* ======================================
@@ -211,7 +205,7 @@ button {
     width: 42px;
     height: 42px;
     min-width: 42px;
-    border: 1px solid rgba(0,0,0,0.25);
+    border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -281,7 +275,7 @@ button {
     width: 100%;
     max-width: 420px;
     height: 1px;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 .community-quote {
@@ -295,7 +289,7 @@ button {
 .community-meta {
     margin-top: 2rem;
     font-size: 0.95rem;
-    color: rgba(0,0,0,0.75);
+    color: rgba(0, 0, 0, 0.75);
 }
 
 .community-image-placeholder {
@@ -312,11 +306,11 @@ button {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .dot.active {
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
 }
 
 /* ======================================
@@ -339,38 +333,7 @@ button {
     max-width: 450px;
 }
 
-<<<<<<< HEAD
 .placeholder-portrait {
     min-height: 360px;
-    background: #161616;
->>>>>>> d4ab788 (Satt grunden för index sidan med en header och en footer. Ändrade även lite i css filen för att få en bättre design på sidan.)
-=======
-/* ======================================
-   RESPONSIVE
-====================================== */
-@media (max-width: 991px) {
-    .hero-overlay {
-        justify-content: center;
-        align-items: flex-end;
-        padding: 2rem;
-    }
-
-    .hero-card {
-        text-align: center;
-    }
-
-    .community-left,
-    .community-image-placeholder {
-        min-height: auto;
-    }
-
-    .community-content {
-        padding: 4rem 2rem;
-    }
-
-    .community-quote {
-        font-size: 1.4rem;
-        line-height: 1.7;
-    }
->>>>>>> a0ea14d (Css ändringar)
+    background-color: #1b1b1b;
 }
