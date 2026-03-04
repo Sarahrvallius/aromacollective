@@ -7,7 +7,6 @@ require_once 'assets/includes/header.php';
 require_once 'assets/config/db.php';
 ?>
 
-<body>
     <main>
         <!--Profile-->
         <section class="bg-offwhite py-5">
@@ -115,4 +114,3 @@ require_once 'assets/config/db.php';
             </div>
         </section>
     </main>
-</body>
