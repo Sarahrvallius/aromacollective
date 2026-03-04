@@ -24,7 +24,7 @@
                 <div class="row align-items-center">
                     <!-- Profile Image -->
                     <div class="col-md-3 offset-md-1 text-center mb-4 mb-md-0 me-5">
-                        <img src="assets/images/vikkibilan-woman-8429860_1280.png" alt="Profile" class="rounded-circle img-fluid mb-3" style="width: 250px; height: 250px; object-fit: cover;">
+                        <img src="assets/images/profiletemporary.png" alt="Profile" class="rounded-circle img-fluid mb-3" style="width: 250px; height: 250px; object-fit: cover;">
                         <a href="#" class="text-dark text-decoration-none">
                             <i class="fa-regular fa-pen-to-square me-2"></i>Edit profile
                         </a>
