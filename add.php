@@ -9,7 +9,7 @@ require_once 'assets/functions/insert.php';
 require_once 'assets/includes/header.php';
 ?>
 
-<main class="bg-light" class="container">
+<main class="bg-light" class="container"> 
 
     <?php //message if account created successfully
     // check if an action is set
