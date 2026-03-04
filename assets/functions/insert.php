@@ -3,19 +3,15 @@
 require_once 'assets/config/db.php';
 
 
-if (){
-
-    //isset= control that someone push the button 
-    isset($_POST ['register']) 
-
+if (isset($_POST['register'])) {
     //create a query - skapa en förfrågan till databasen 
     $sql = '
-        INSERT INTO users (fistname, lastname, email, gender, password, regdate)
-        VALUES (:firstname, :lastname, :email, :gender, :pasword, NOW())
-
+        INSERT INTO users (firstname, lastname, email, gender, password, regdate)
+        VALUES (:firstname, :lastname, :email, :gender, :password, NOW())
     ';
+
     //prepare query - förbered förfrågan 
-    $stmt = $dbh->prepare($sql); 
+    $stmt = $dbh->prepare($sql);
 
     //connects from fields with db containers
     $stmt->bindValue(':firstname', $_POST['firstname']);
@@ -25,13 +21,10 @@ if (){
     $stmt->bindValue(':password', $_POST['password']);
 
     // Sends query to database - skicka värderna till databasen 
-    try{ $stmt->execute();
-         header('Location: ../../add.php?action=success');
-         }
-    catch (PDOException $e){
+    try {
+        $stmt->execute();
+        header('Location: ../../add.php?action=success');
+    } catch (PDOException $e) {
         echo $e->getMessage();
     }
-    
-
 }
-
