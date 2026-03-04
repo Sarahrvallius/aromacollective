@@ -54,6 +54,7 @@ a {
 /*Profile - Bio width*/
 .profile-bio {
     max-width: 450px;
+<<<<<<< HEAD
 }
 
 /*Reviews - Paragraph width*/
@@ -69,4 +70,266 @@ a {
 /*Top notes section - fixed height*/
 .top-notes-row {
     height: 450px;
+=======
+}/* ======================================
+   GRUNDLÄGGANDE SIDSTILAR
+====================================== */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #F2F1ED;
+    color: #161616;
+}
+
+main {
+    min-height: calc(100vh - 5rem);
+}
+
+footer {
+    height: 5rem;
+}
+
+/* ======================================
+   TYPOGRAFI
+====================================== */
+
+h1,
+h2,
+h3 {
+    font-family: 'Bodoni Moda', serif;
+}
+
+/* ======================================
+   BAKGRUNDSFÄRGER
+====================================== */
+
+.bg-offwhite {
+    background-color: #F2F1EE;
+}
+
+.bg-red {
+    background-color: #710014;
+}
+
+.bg-beige {
+    background-color: #B38F6F;
+}
+
+/* ======================================
+   HERO SECTION
+====================================== */
+
+.hero {
+    position: relative;
+    min-height: 420px;
+    background: #161616;
+}
+
+.hero-placeholder {
+    height: 420px;
+    background: #161616;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 2rem;
+    color: white;
+}
+
+.hero-card {
+    max-width: 360px;
+    text-align: center;
+}
+
+/* Hero-knapp färgfix */
+
+.hero .btn {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero .btn:visited {
+    color: #fff;
+}
+
+/* ======================================
+   HOW IT WORKS
+====================================== */
+
+.how-step {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+
+.how-icon {
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(0,0,0,.25);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+}
+
+/* ======================================
+   TRENDING SECTION
+====================================== */
+
+.trending-section {
+    background: #710014;
+    color: white;
+}
+
+/* Parfym placeholder */
+
+.product-placeholder {
+
+    height: 220px;
+    width: 100%;
+    max-width: 360px;
+
+    margin: 0 auto;
+
+    background: white;
+    border-radius: 10px;
+}
+
+/* Parfymnamn */
+
+.product-name {
+    margin-top: .75rem;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    color: rgba(242,241,237,.95);
+}
+
+/* ======================================
+   COMMUNITY VOICES
+====================================== */
+
+.community-section {
+    background: #F2F1ED;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+}
+
+/* Rubrik */
+
+.community-title__text {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+/* Linje under rubriken */
+
+.community-title__line {
+    width: 100%;
+    height: 1px;
+    background: rgba(22,22,22,.35);
+    margin-top: 1rem;
+}
+
+/* Citatkort */
+
+.quote-card {
+
+    background: #710014;
+    color: #F2F1ED;
+
+    padding: 2.6rem;
+
+    min-height: 380px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quote-card__text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.quote-card__meta {
+    opacity: .85;
+    margin-bottom: 1rem;
+}
+
+/* Bildkort */
+
+.community-image {
+    background: #161616;
+    min-height: 380px;
+}
+
+/* Prickar under citat */
+
+.quote-dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.dot {
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: rgba(242,241,237,.35);
+}
+
+.dot.active {
+    background: rgba(242,241,237,.9);
+}
+
+/* ======================================
+   BEIGE AVSKILJARE + RÖD FOOTER
+====================================== */
+
+.section-divider {
+    height: 60px;
+    background: #F2F1ED;
+}
+
+.bottom-red {
+    height: 160px;
+    background: #710014;
+}
+
+/* ======================================
+   PLACEHOLDERS
+====================================== */
+
+.placeholder-hero {
+    height: 420px;
+    background: #161616;
+}
+
+.placeholder-perfume {
+    height: 220px;
+    background: white;
+}
+
+.placeholder-portrait {
+    min-height: 360px;
+    background: #161616;
+>>>>>>> d4ab788 (Satt grunden för index sidan med en header och en footer. Ändrade även lite i css filen för att få en bättre design på sidan.)
 }
