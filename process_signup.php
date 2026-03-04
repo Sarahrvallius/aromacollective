@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Förbered SQL-frågan
-    $sql = "INSERT INTO users (email, password, gender) VALUES (:email, :password, :gender)";
+    $sql = "INSERT INTO users (email, password, gender) 
+            VALUES (:email, :password, :gender)";
 
     try {
         $stmt = $dbh->prepare($sql);
