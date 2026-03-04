@@ -10,6 +10,7 @@ require_once 'assets/includes/header.php'; //includes header
         <ul> <a href="signin.php">Sign in</a> </ul> <!-- link to regerstration page -->
         <ul> <a href="library.php"> Parfumes </a> </ul> <!-- link to library page -->
         <ul> <a href="about.php">About us</a> </ul> <!-- link to about page -->
+        <ul> <a href="profile.php">Profile</a> </ul> <!-- link to profile -->
     </il>
 </main>
 
