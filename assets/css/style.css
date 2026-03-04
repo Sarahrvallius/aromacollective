@@ -38,3 +38,17 @@ h4 {
 p, a {
     font-family: 'Open Sans', sans-serif;
 }
+
+/*Profile page*/
+
+/*Needed for profile image size*/
+.profile-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/*Needed for profile bio text size*/
+.profile-bio {
+    max-width: 450px;
+}
