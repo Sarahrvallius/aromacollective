@@ -11,6 +11,23 @@ require_once 'assets/includes/header.php';
 
 <main class="bg-light" class="container">
 
+    <?php //message if account created successfully
+    // check if an action is set
+    if (isset($_GET['action'])) {
+
+        //check wich action is set
+        switch ($_GET['action']) {
+            case 'success':
+
+                // display success message
+                echo '<div class="alert alert-success text-center" role="alert">
+                        Account created successfully! You can now <a href="signin.php" class="alert-link">log in</a>.
+                      </div>';
+                break;
+        }
+    }
+    ?>
+
     <div class="row min-vh-100 justify-content-center align-items-center py-5">
         <div class="col-12 col-md-8 col-lg-6">
 
