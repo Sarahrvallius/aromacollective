@@ -14,7 +14,7 @@ footer {
 }
 
 
-/*Background color*/
+/*Global - Background colors*/
 .bg-offwhite {
     background-color: #F2F1EE;
 }
@@ -27,28 +27,46 @@ footer {
     background-color: #DEC2A2;
 }
 
-/*Font styles*/
+/*Global - Font styles*/
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
     font-family: 'Bodoni Moda', serif;
 }
 
-p, a {
+p,
+a {
     font-family: 'Open Sans', sans-serif;
 }
 
-/*Profile page*/
 
-/*Needed for profile image size*/
+/*Custom CSS for profile.php*/
+/*Profile - Image size*/
 .profile-img {
     width: 250px;
     height: 250px;
     object-fit: cover;
 }
 
-/*Needed for profile bio text size*/
+/*Profile - Bio width*/
 .profile-bio {
     max-width: 450px;
+}
+
+/*Reviews - Paragraph width*/
+.review-text {
+    max-width: 500px;
+}
+
+/*Top notes - Image cover fit*/
+.img-cover {
+    object-fit: cover;
+}
+
+/*Top notes section - fixed height*/
+.top-notes-row {
+    height: 450px;
 }
