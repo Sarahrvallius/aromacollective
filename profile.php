@@ -16,9 +16,9 @@ require_once 'assets/config/db.php';
                 <div class="col-3 offset-1 text-center me-5">
                     <img src="assets/images/profiletemporary.png" alt="Profile" class="rounded-circle img-fluid mb-3 profile-img">
                     <!--Edit profile link-->
-                    <a href="#" class="text-dark text-decoration-none d-block" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                    <button type="button" class="btn border-0 bg-transparent text-dark p-0" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                         <i class="fa-regular fa-pen-to-square me-2"></i>Edit profile
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Profile name, info, bio -->
@@ -51,7 +51,7 @@ require_once 'assets/config/db.php';
                 <!-- Perfume card 1 -->
                 <div class="col">
                     <figure class="text-center mb-0">
-                        <a href="product.php?id=1">
+                        <a href="#">
                             <img src="https://loremflickr.com/350/350/perfume" class="img-fluid rounded shadow-sm" alt="Perfume">
                         </a>
                         <figcaption class="mt-2">
@@ -66,7 +66,7 @@ require_once 'assets/config/db.php';
                 <!-- Perfume card 2 -->
                 <div class="col">
                     <figure class="text-center mb-0">
-                        <a href="product.php?id=2">
+                        <a href="#">
                             <img src="https://loremflickr.com/350/350/perfume" class="img-fluid rounded shadow-sm" alt="Perfume">
                         </a>
                         <figcaption class="mt-2">
@@ -81,7 +81,7 @@ require_once 'assets/config/db.php';
                 <!-- Perfume card 3 -->
                 <div class="col">
                     <figure class="text-center mb-0">
-                        <a href="product.php?id=3">
+                        <a href="#">
                             <img src="https://loremflickr.com/350/350/perfume" class="img-fluid rounded shadow-sm" alt="Perfume">
                         </a>
                         <figcaption class="mt-2">
@@ -96,7 +96,7 @@ require_once 'assets/config/db.php';
                 <!-- Perfume card 4 -->
                 <div class="col">
                     <figure class="text-center mb-0">
-                        <a href="product.php?id=4">
+                        <a href="#">
                             <img src="https://loremflickr.com/350/350/perfume" class="img-fluid rounded shadow-sm" alt="Perfume">
                         </a>
                         <figcaption class="mt-2">
@@ -129,7 +129,7 @@ require_once 'assets/config/db.php';
             <div class="row mb-5 align-items-start">
                 <!--Image-->
                 <div class="col-3">
-                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded">
+                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded shadow-sm">
                 </div>
                 <!--Rating-->
                 <div class="col-8 ps-4">
@@ -152,7 +152,7 @@ require_once 'assets/config/db.php';
             <div class="row align-items-start">
                 <!--Image-->
                 <div class="col-3">
-                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded">
+                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded shadow-sm">
                 </div>
                 <!--Rating-->
                 <div class="col-8 ps-4">
