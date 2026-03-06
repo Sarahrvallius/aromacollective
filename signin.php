@@ -42,7 +42,7 @@ require_once 'assets/config/db.php';
 
                         <div class="mt-4 text-center">
                             <p class="small mb-0 text-muted">New to the collective?
-                                <a href="signup.php" class="fw-bold text-decoration-none" style="color: #AE9074;">Create account</a>
+                                <a href="add.php" class="fw-bold text-decoration-none" style="color: #AE9074;">Create account</a>
                             </p>
                         </div>
 
