@@ -18,7 +18,7 @@ require_once 'assets/config/db.php';
                     <div class="card-body p-4 p-md-5">
 
                         <h2 class="text-center mb-2 fw-bold" style="font-family: 'Bodoni Moda', serif; color: #7E1A01;">Welcome Back</h2>
-                        <p class="text-center text-muted mb-4 small">Sign in to your Aromas Collective account</p>
+                        <p class="text-center text-muted mb-4 small">Sign in to your Aroma Collective account</p>
 
                         <form action="process_login.php" method="POST">
 
