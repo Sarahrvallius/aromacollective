@@ -88,7 +88,7 @@ require_once 'assets/includes/header.php';
             </div>
 
             <div class="text-center mt-4">
-                <a href="index.php" class="text-muted small text-decoration-none">← Back to Aromas Collective</a>
+                <a href="index.php" class="text-muted small text-decoration-none">← Back to Aroma Collective</a>
             </div>
 
         </div>
