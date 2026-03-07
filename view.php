@@ -10,6 +10,17 @@ require_once 'assets/includes/header.php';
 ?>
 
 <main class="container mt-5">
+    <?php
+    if (isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'updated':
+                echo '<div class="alert alert-success text-center" role="alert">
+                        Account updated successfully!
+                      </div>';
+                break;
+        }
+    }
+    ?>
     <table class="table table-bordered">
         <tr>
             <th>id</th>
@@ -33,11 +44,13 @@ require_once 'assets/includes/header.php';
                     <td>' . $row['email'] . '</td>
 
                     <td>
-                    <i class="fa-solid fa-pen-to-square"></i> <a href="edit.php">Uppdatera</a>
+                    <i class="fa-solid fa-pen-to-square"></i> 
+                    <a href="edit.php?id=' . $row['id'] . '">Uppdatera</a>
                     </td> 
                     
                     <td>
-                    <i class="fa-solid fa-trash-can"></i> <a href="remove.php">Radera</a>
+                    <i class="fa-solid fa-trash-can"></i> 
+                    <a href="remove.php?id=' . $row['id'] . '">Radera</a>
                     </td>  
                     
                </tr>
