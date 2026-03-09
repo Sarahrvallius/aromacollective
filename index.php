@@ -4,6 +4,23 @@ require_once 'assets/includes/header.php'; //includes header
 ?>
 
 <main>
+    <?php //message if account created successfully
+    // check if an action is set
+    if (isset($_GET['action'])) {
+
+        //check wich action is set
+        switch ($_GET['action']) {
+            case 'deleted':
+
+                // display success message
+                echo '<div class="alert alert-success text-center" role="alert">
+                        Account deleted successfully!
+                      </div>';
+                break;
+        }
+    }
+    ?>
+
     <p> Här skriver vi html-kodning för index-sidan. </p>
     <il>
         <ul> <a href="add.php">Join us</a> </ul> <!-- link to sign up page -->
