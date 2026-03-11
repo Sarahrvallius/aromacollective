@@ -1,13 +1,13 @@
 <?php
 //checks wether loginbutton is clicked
-if (isset($_POST['login'])){
+if (isset($_POST['login'])) {
 
     //check wether e-mail and password fields are empty
-    if (empty($_POST['email']) || empty($_POST['password'])){
+    if (empty($_POST['email']) || empty($_POST['password'])) {
 
-    //Redirect to index.php with error message
-    header('Location: ../../index.php?action=empty')
-    exit()
+        //Redirect to index.php with error message
+        header('Location: ../../index.php?action=empty');
+        exit();
     }
 
     //trims e-mail and password - take away whitespace from the beginning and end of the string
@@ -29,7 +29,5 @@ if (isset($_POST['login'])){
     $count = $stmt->rowCount();
     //checks wether user exist 
     if ($count > 0) {
-        
     }
-    
 }
