@@ -3,6 +3,8 @@
 require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
+// inkluderar header
+require_once 'assets/includes/header.php';
 
 // Temporary until login/session is implemented
 $user_id = 1;

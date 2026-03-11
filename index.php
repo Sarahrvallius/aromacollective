@@ -1,6 +1,10 @@
 <?php
-require_once 'assets/config/db.php'; // inkluderar databasuppkoppling
-require_once 'assets/includes/header.php'; //includes header
+// show errors for debugging
+require_once 'assets/includes/display_errors.php';
+//includes database connection
+require_once 'assets/config/db.php';
+// inkluderar header
+require_once 'assets/includes/header.php';
 ?>
 
 <main>

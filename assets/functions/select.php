@@ -1,3 +1,4 @@
+
 <?php
 // Gets all information from database 
 
@@ -6,3 +7,4 @@ $sql = "SELECT * FROM users";
 $stmt = $dbh->prepare($sql);
 //Sends queery to database
 $stmt->execute();
+?>
