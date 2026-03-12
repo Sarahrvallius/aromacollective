@@ -114,53 +114,90 @@ if ($search !== '') {
 }
 ?>
 
-<main class="py-5">
-    <div class="container">
-        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-4">
-            <div>
-                <h1 class="m-0">Discover fragrances</h1>
-                <p class="text-muted m-0"></p>
-            </div>
+<nav class="navbar navbar-expand-lg bg-offwhite">
+    <div class="container py-2">
+        <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
 
-            <form class="d-flex gap-2" method="GET" action="library.php">
-                <input
-                    class="form-control"
-                    type="search"
-                    name="search"
-                    value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
-                    placeholder="Search by name, brand, or notes..."
-                    style="width: 250px;"
-                >
-                <button class="btn btn-outline-dark" type="submit">Search</button>
-            </form>
+        <div class="ms-auto d-flex gap-3">
+            <a class="text-decoration-none text-dark" href="#">About us</a>
+            <a class="text-decoration-none text-dark fw-semibold" href="library.php">Perfumes</a>
+            <a class="text-decoration-none text-dark" href="profile.php">Profile</a>
         </div>
     </div>
+</nav>
 
-    <div class="library-panel">
+<main class="bg-offwhite">
+    <section class="py-5">
         <div class="container">
-            <div class="row g-4">
-                <?php if (count($filteredPerfumes) > 0): ?>
-                    <?php foreach ($filteredPerfumes as $perfume): ?>
-                        <div class="col-6 col-md-3 col-lg-2">
-                            <a href="<?php echo htmlspecialchars($perfume['link'], ENT_QUOTES, 'UTF-8'); ?>" class="perfume-card">
-                                <img
-                                    src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
-                                    alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                                >
-                                <div class="text-dark text-uppercase perfume-name text-center mt-2">
-                                    <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="col-12">
-                        <p class="text-center m-0">No fragrances found.</p>
-                    </div>
-                <?php endif; ?>
+            <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-4">
+                <div>
+                    <h1 class="m-0 library-title">Discover fragrances</h1>
+                </div>
+
+                <form class="d-flex gap-2 library-search-form" method="GET" action="library.php">
+                    <input
+                        class="form-control library-search-input"
+                        type="search"
+                        name="search"
+                        value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                        placeholder="Search by name, brand, or notes..."
+                    >
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
             </div>
         </div>
-    </div>
+
+        <div class="library-panel">
+            <div class="container">
+                <div class="row g-4">
+
+                    <?php if (count($filteredPerfumes) > 0): ?>
+                        <?php foreach ($filteredPerfumes as $perfume): ?>
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <a
+                                    href="<?php echo htmlspecialchars($perfume['link'], ENT_QUOTES, 'UTF-8'); ?>"
+                                    class="library-perfume-card d-block text-decoration-none"
+                                >
+                                    <img
+                                        src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        class="library-perfume-image img-fluid w-100 d-block"
+                                    >
+                                    <div class="library-perfume-name text-dark text-uppercase text-center mt-2">
+                                        <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col-12">
+                            <p class="text-center m-0">No fragrances found.</p>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="library-footer-panel">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>Aroma Collective</div>
+
+            <div class="d-flex align-items-center gap-3">
+                <span>Social media</span>
+                <a href="#" class="text-dark library-social-link" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="text-dark library-social-link" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-dark library-social-link" aria-label="X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 </main>
 
 <?php
