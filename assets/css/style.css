@@ -90,14 +90,23 @@ button {
 
 /* ======================================
    ABOUT.PHP
+====================================== */
 
+/*Fixed aspect ratio for all images in carousel*/
 .about-silhouette-ratio {
     aspect-ratio: 914 / 1280;
     overflow: hidden;
 }
 
+/*Fixed size for hero image*/
+.img-size {
+    width: 75%;
+    height: auto;
+}
+
 /* ======================================
    INDEX.PHP
+====================================== */
 
 .section-title {
     font-size: 2.2rem;
@@ -112,6 +121,8 @@ button {
 
 /* ======================================
    HERO
+====================================== */
+
 .hero {
     position: relative;
     min-height: 540px;
@@ -161,6 +172,8 @@ button {
 
 /* ======================================
    HOW IT WORKS
+====================================== */
+
 .how-step {
     display: flex;
     gap: 1rem;
@@ -186,6 +199,8 @@ button {
 
 /* ======================================
    TRENDING
+====================================== */
+
 .trending-section {
     background-color: #681018;
 }
@@ -218,6 +233,8 @@ button {
 
 /* ======================================
    COMMUNITY
+====================================== */
+
 .community-section {
     background-color: #F2F1EE;
 }
@@ -284,6 +301,8 @@ button {
 
 /* ======================================
    BEIGE BLOCK
+====================================== */
+
 .beige-block {
     height: 180px;
 }
