@@ -3,13 +3,15 @@
 require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
-//register information to database
-require_once 'assets/functions/insert.php';
+//Update information in database
+require_once 'assets/functions/update.php';
+//Specifik information about user 
+require_once 'assets/functions/select-id.php';
 // inkluderar header
 require_once 'assets/includes/header.php';
 ?>
 
-<main class="bg-light" class="container"> 
+<main class="bg-light" class="container">
 
     <?php //message if account created successfully
     // check if an action is set
@@ -34,25 +36,25 @@ require_once 'assets/includes/header.php';
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4 p-md-5">
 
-                    <h2 class="text-center mb-2 fw-bold" style="font-family: 'Bodoni Moda', serif; color: #7E1A01;">Create Account</h2>
-                    <p class="text-center text-muted mb-4">Join our fragrance community and start sharing your scent journey.</p>
+                    <h2 class="text-center mb-2 fw-bold" style="font-family: 'Bodoni Moda', serif; color: #7E1A01;">Update Account</h2>
+                    <p class="text-center text-muted mb-4">Modify your account information below</p>
 
-                    <form action="add.php" method="POST">
+                    <form action="edit.php" method="POST">
 
                         <div class="row g-3 mb-3">
                             <div class="col-12 col-md-6">
                                 <label for="firstname" class="form-label small fw-bold text-uppercase">First name</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" required>
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" required value=<?php echo $row['firstname']; ?>>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="lastname" class="form-label small fw-bold text-uppercase">Last name</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" required>
+                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" required value=<?php echo $row['lastname']; ?>>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label small fw-bold text-uppercase">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required value=<?php echo $row['email']; ?>>
                         </div>
 
                         <div class="mb-3">
@@ -66,29 +68,21 @@ require_once 'assets/includes/header.php';
                             </select>
                         </div>
 
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label small fw-bold text-uppercase">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
-                        </div>
-
-                        <button type="submit" name="register" class="btn w-100 py-3 fw-bold text-uppercase" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0;">
-                            Create account
+                        <button type="submit" name="modify" class="btn w-100 py-3 fw-bold text-uppercase" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0;">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Update account
                         </button>
 
                     </form>
 
-                    <div class="mt-4 text-center">
-                        <p class="small mb-0 text-muted">Already a member?
-                            <a href="signin.php" class="fw-bold text-decoration-none" style="color: #AE9074;">Log in here.</a>
-                        </p>
-                    </div>
 
                 </div>
             </div>
 
             <div class="text-center mt-4">
-                <a href="index.php" class="text-muted small text-decoration-none">← Back to Aroma Collective</a>
+                <a href="index.php" class="text-muted small text-decoration-none"> ← Back to Aroma Collective</a>
             </div>
 
         </div>
