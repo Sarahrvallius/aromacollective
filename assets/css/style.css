@@ -70,3 +70,23 @@ a {
 .top-notes-row {
     height: 450px;
 }
+
+.img-size {
+    width: 75%;
+    height: auto;
+}
+
+
+
+
+
+/*ABOUT.US PAGE LÄGGS TILL MANUELLT*/
+
+.font-heading {
+    font-family: 'Bodoni Moda', serif;
+}
+
+.about-silhouette-ratio {
+    aspect-ratio: 914 / 1280;
+    overflow: hidden;
+}
