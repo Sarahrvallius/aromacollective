@@ -1,5 +1,5 @@
 /* ======================================
-   BAS
+   GLOBAL STYLES
 ====================================== */
 html,
 body {
@@ -15,8 +15,10 @@ footer {
     height: 5rem;
 }
 
+/* ======================================
+   GLOBAL COLORS
+====================================== */
 
-/*Global - Background colors*/
 .bg-offwhite {
     background-color: #F2F1EE;
 }
@@ -29,7 +31,10 @@ footer {
     background-color: #DEC2A2;
 }
 
-/*Global - Font styles*/
+/* ======================================
+   GLOBAL FONT STYLES
+====================================== */
+
 h1,
 h2,
 h3,
@@ -40,12 +45,18 @@ h6 {
 }
 
 p,
-a {
+a,
+li,
+span,
+button {
     font-family: 'Open Sans', sans-serif;
 }
 
 
-/*Custom CSS for profile.php*/
+/* ======================================
+   PROFILE.PHP
+====================================== */
+
 /*Profile - Image size*/
 .profile-img {
     width: 250px;
@@ -56,7 +67,6 @@ a {
 /*Profile - Bio width*/
 .profile-bio {
     max-width: 450px;
-
 }
 
 /*Reviews - Paragraph width*/
@@ -72,60 +82,15 @@ a {
 /*Top notes section - fixed height*/
 .top-notes-row {
     height: 450px;
-
-}/* ======================================
-   GRUNDLÄGGANDE SIDSTILAR
-====================================== */
-
-html, body {
-    height: 100%;
 }
 
-body {
-    background-color: #F2F1EE;
-    color: #161616;
-}
 
-main {
-    min-height: calc(100vh - 5rem);
-}
 
-footer {
-    height: 5rem;
-}
 
 /* ======================================
-   FÄRGER
+   INDEX.PHP
 ====================================== */
-.bg-offwhite {
-    background-color: #F2F1EE;
-}
 
-.bg-red {
-    background-color: #710014;
-}
-
-.bg-beige {
-    background-color: #DEC2A2;
-}
-
-/* ======================================
-   TYPOGRAFI
-====================================== */
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'Bodoni Moda', serif;
-}
-
-p,
-a,
-li,
-span,
-button {
-    font-family: 'Bodoni Moda', serif;
-}
 .section-title {
     font-size: 2.2rem;
     line-height: 1.1;
@@ -217,7 +182,7 @@ button {
    TRENDING
 ====================================== */
 .trending-section {
-    background-color: #710014;
+    background-color: #681018;
 }
 
 .product-placeholder {
@@ -318,22 +283,4 @@ button {
 ====================================== */
 .beige-block {
     height: 180px;
-}
-
-/* ======================================
-   PROFILE
-====================================== */
-.profile-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-}
-
-.profile-bio {
-    max-width: 450px;
-}
-
-.placeholder-portrait {
-    min-height: 360px;
-    background-color: #1b1b1b;
 }
