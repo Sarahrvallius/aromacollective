@@ -52,6 +52,10 @@ button {
     font-family: 'Open Sans', sans-serif;
 }
 
+/*Can be used to override sans-serif*/
+.font-heading {
+    font-family: 'Bodoni Moda', serif;
+}
 
 /* ======================================
    PROFILE.PHP
@@ -84,8 +88,14 @@ button {
     height: 450px;
 }
 
+/* ======================================
+   ABOUT.PHP
+====================================== */
 
-
+.about-silhouette-ratio {
+    aspect-ratio: 914 / 1280;
+    overflow: hidden;
+}
 
 /* ======================================
    INDEX.PHP
