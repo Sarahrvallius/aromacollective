@@ -88,221 +88,123 @@ button {
     height: 450px;
 }
 
-/* ======================================
-   ABOUT.PHP
-====================================== */
+/* LIBRARY */
 
-/*Fixed aspect ratio for all images in carousel*/
-.about-silhouette-ratio {
-    aspect-ratio: 914 / 1280;
-    overflow: hidden;
-}
-
-/*Fixed size for hero image*/
-.img-size {
-    width: 75%;
-    height: auto;
-}
-
-/* ======================================
-   INDEX.PHP
-====================================== */
-
-.section-title {
-    font-size: 2.2rem;
+.library-title {
+    font-size: 3rem;
     line-height: 1.1;
 }
 
-.section-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 320px;
+.library-search-input {
+    width: 250px;
 }
 
-/* ======================================
-   HERO
-====================================== */
-
-.hero {
-    position: relative;
-    min-height: 540px;
-    overflow: hidden;
+.library-panel {
+    background-color: #d4d2d3;
+    padding: 55px 0;
 }
 
-.hero-image-placeholder {
-    width: 100%;
-    height: 540px;
-    background-color: #1f1f1f;
+.library-perfume-card {
+    transition: transform 0.2s ease;
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 4rem 6rem;
+.library-perfume-card:hover {
+    transform: translateY(-3px);
 }
 
-.hero-card {
-    max-width: 340px;
-    color: #fff;
-    text-align: left;
+.library-perfume-image {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background-color: #ffffff;
 }
 
-.hero-small {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #fff;
-}
-
-.placeholder-text,
-.placeholder-text-dark {
-    font-size: 0.95rem;
+.library-perfume-name {
+    font-size: 0.75rem;
     letter-spacing: 1px;
 }
 
-.placeholder-text {
-    color: rgba(255, 255, 255, 0.7);
+.library-footer-panel {
+    background-color: #B28F6F;
+    padding: 25px 0;
 }
 
-.placeholder-text-dark {
-    color: rgba(0, 0, 0, 0.5);
+.library-social-link:hover {
+    opacity: 0.6;
 }
 
-/* ======================================
-   HOW IT WORKS
-====================================== */
-
-.how-step {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+@media (max-width: 991.98px) {
+    .library-title {
+        font-size: 2.4rem;
+    }
 }
 
-.how-step p {
-    margin: 0;
-    line-height: 1.5;
+@media (max-width: 575.98px) {
+    .library-title {
+        font-size: 2rem;
+    }
+
+    .library-search-form {
+        width: 100%;
+    }
+
+    .library-search-input {
+        width: 100%;
+    }
 }
 
-.how-icon {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-}
-
-/* ======================================
-   TRENDING
-====================================== */
-
-.trending-section {
-    background-color: #681018;
-}
-
-.product-placeholder {
-    width: 100%;
-    max-width: 220px;
-    height: 260px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.product-name {
-    margin-top: 1rem;
-    color: #F2F1EE;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-}
-
-.trending-link {
-    color: #F2F1EE;
-    text-decoration: none;
-}
-
-.trending-link:hover {
-    color: #F2F1EE;
-    text-decoration: underline;
-}
-
-/* ======================================
-   COMMUNITY
-====================================== */
-
-.community-section {
-    background-color: #F2F1EE;
-}
-
-.community-left {
-    display: flex;
-    align-items: center;
-    min-height: 620px;
-    background-color: #F2F1EE;
-}
-
-.community-content {
-    max-width: 620px;
-    padding: 5rem 3rem;
-    margin: 0 auto;
-}
-
-.community-title {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-}
-
-.community-line {
-    width: 100%;
-    max-width: 420px;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
-.community-quote {
+.library-brand {
     font-family: 'Bodoni Moda', serif;
-    font-size: 1.7rem;
-    line-height: 1.8;
-    margin: 0;
-    max-width: 620px;
 }
 
-.community-meta {
-    margin-top: 2rem;
+/* PERFUMES */
+
+.perfumes-brand {
     font-size: 0.95rem;
-    color: rgba(0, 0, 0, 0.75);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.community-image-placeholder {
-    min-height: 620px;
-    background-color: #1b1b1b;
+.perfumes-title {
+    font-size: 3rem;
 }
 
-.quote-dots {
-    display: flex;
-    gap: 0.8rem;
+.perfumes-subtitle {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.dot {
-    width: 12px;
-    height: 12px;
+.perfumes-category-badge {
+    background-color: #c49a6c;
+    color: #ffffff;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.perfumes-hero-image {
+    max-width: 380px;
+    border-radius: 20px;
+}
+
+.perfumes-info-box,
+.perfumes-review-card,
+.perfumes-review-form-box {
+    background-color: #f3f1ee;
+    border-radius: 24px;
+}
+
+.perfumes-profile-circle {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.25);
+    background-color: #d8d5d2;
 }
 
-.dot.active {
-    background: rgba(0, 0, 0, 0.85);
+.perfumes-star {
+    font-size: 1.4rem;
+    color: #b8b8b8;
 }
 
-/* ======================================
-   BEIGE BLOCK
-====================================== */
-
-.beige-block {
-    height: 180px;
+.perfumes-star-filled {
+    color: #c49a6c;
 }
