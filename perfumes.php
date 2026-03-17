@@ -3,8 +3,6 @@
 require_once 'assets/includes/display_errors.php';
 // includes database connection
 require_once 'assets/config/db.php';
-// includes header
-require_once 'assets/includes/header.php';
 
 // selected perfume from the library page
 $selectedPerfume = $_GET['perfume'] ?? 'woodsage';
@@ -97,6 +95,9 @@ function renderStars($rating) {
 
     return $output;
 }
+
+// includes header
+require_once 'assets/includes/header.php';
 ?>
 
 <nav class="navbar navbar-expand-lg bg-offwhite">
