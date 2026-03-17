@@ -29,5 +29,18 @@ if (isset($_POST['login'])) {
     $count = $stmt->rowCount();
     //checks wether user exist 
     if ($count > 0) {
+
+        //Save result to variable
+        $row = $stmt->fetch();
+        //creates session variable with user id
+        $_SESSION['user_id'] = $row['id'];
+        //Redirect to index.php with success message
+        header('Location: ../../index.php?action=success');
+        exit();
+
+        //redirect to index.php with error message if user does not exist
+    } else {
+        header('Location: ../../index.php?action=error');
+        exit();
     }
 }
