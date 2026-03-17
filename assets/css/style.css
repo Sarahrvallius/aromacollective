@@ -1,4 +1,6 @@
-/* General styles */
+/* ======================================
+   GLOBAL STYLES
+====================================== */
 html,
 body {
     height: 100%;
@@ -13,8 +15,10 @@ footer {
     height: 5rem;
 }
 
+/* ======================================
+   GLOBAL COLORS
+====================================== */
 
-/*Global - Background colors*/
 .bg-offwhite {
     background-color: #F2F1EE;
 }
@@ -27,7 +31,10 @@ footer {
     background-color: #DEC2A2;
 }
 
-/*Global - Font styles*/
+/* ======================================
+   GLOBAL FONT STYLES
+====================================== */
+
 h1,
 h2,
 h3,
@@ -38,12 +45,22 @@ h6 {
 }
 
 p,
-a {
+a,
+li,
+span,
+button {
     font-family: 'Open Sans', sans-serif;
 }
 
+/*Can be used to override sans-serif*/
+.font-heading {
+    font-family: 'Bodoni Moda', serif;
+}
 
-/*Custom CSS for profile.php*/
+/* ======================================
+   PROFILE.PHP
+====================================== */
+
 /*Profile - Image size*/
 .profile-img {
     width: 250px;
