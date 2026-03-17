@@ -37,21 +37,9 @@ if (isset($_POST['login'])) {
         //Redirect to index.php with success message
         header('Location: ../../index.php?action=success');
         exit();
-
-        //redirect to index.php with error message if user does not exist
     } else {
+        //redirect to index.php with error message if user does not exist
         header('Location: ../../index.php?action=error');
-    $user = $stmt->fetch();
-
-    if ($user) {
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: profile.php');
-        
->>>>>>> 7de5083a972f5744c400d0c2a59dec01e32d8b07
-
         exit();
     }
-
-    header('Location: signin.php?action=invalid');
-    exit();
 }
