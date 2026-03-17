@@ -25,9 +25,14 @@ if (isset($_POST['login'])) {
     $stmt->bindValue(':password', $password);
     $stmt->execute();
 
-    //counts the number of rows that match the query
-    $count = $stmt->rowCount();
-    //checks wether user exist 
-    if ($count > 0) {
+    $user = $stmt->fetch();
+
+    if ($user) {
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: profile.php');
+        exit();
     }
+
+    header('Location: signin.php?action=invalid');
+    exit();
 }
