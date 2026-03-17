@@ -1,6 +1,8 @@
 <?php
 //init session management, måste vara överst!
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 // show errors for debugging
 require_once 'assets/includes/display_errors.php';

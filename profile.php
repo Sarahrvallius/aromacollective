@@ -3,22 +3,20 @@
 require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
-// inkluderar header
-require_once 'assets/includes/header.php';
 
-// Temporary until login/session is implemented
-$user_id = 1;
-/* change to:
-session_start();
-$user_id = $_SESSION['user_id']; 
-
-add this to stop profile page and send to login if logged out:
-<?php
+// Check if user is logged in, if not redirect to signin page
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 if (!isset($_SESSION['user_id'])) {
     header('Location: signin.php');
     exit;
-} */
+}
 
+// Get the logged-in user's ID from the session
+$user_id = $_SESSION['user_id'];
+
+// Fetch the user's profile information from the database
 try {
     $sql = 'SELECT display_name, age, pronouns, bio, profile_image FROM profiles WHERE user_id = :user_id LIMIT 1';
     $stmt = $dbh->prepare($sql);
@@ -29,11 +27,32 @@ try {
     $profile = null;
 }
 
-$display_name = htmlspecialchars($profile['display_name'] ?? '', ENT_QUOTES, 'UTF-8');
-$age = htmlspecialchars((string) ($profile['age'] ?? ''), ENT_QUOTES, 'UTF-8');
-$pronouns = $profile['pronouns'] ?? 'She/her';
-$bio = htmlspecialchars($profile['bio'] ?? '', ENT_QUOTES, 'UTF-8');
-$profile_image = htmlspecialchars($profile['profile_image'] ?? 'profiletemporary.png', ENT_QUOTES, 'UTF-8');
+// Fetch user's name from users table
+$firstname = 'Jane';
+$lastname = 'Doe';
+try {
+    $sql = 'SELECT firstname, lastname FROM users WHERE id = :user_id LIMIT 1';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $user = $stmt->fetch();
+
+    if ($user && !empty($user['firstname'])) {
+        $firstname = $user['firstname'];
+    }
+
+    if ($user && !empty($user['lastname'])) {
+        $lastname = $user['lastname'];
+    }
+} catch (PDOException $e) {
+}
+
+// Save profile values in variables
+$display_name = $profile['display_name'] ?? '';
+$age = !empty($profile['age']) ? $profile['age'] : '';
+$pronouns = $profile['pronouns'] ?? 'None';
+$bio = $profile['bio'] ?? '';
+$profile_image = $profile['profile_image'] ?? 'profiles/placeholder-img.svg';
 
 // includes header
 require_once 'assets/includes/header.php';
@@ -56,15 +75,17 @@ require_once 'assets/includes/header.php';
                 <!-- Profile name, info, bio -->
                 <div class="col-7 ps-5">
                     <div class="d-flex gap-5 align-items-start mb-2">
-                        <h1 class="display-5 mb-0"><?php echo $display_name !== '' ? $display_name : 'Jane Doe'; ?></h1>
+                        <h1 class="display-5 mb-0"><?php echo $display_name !== '' ? $display_name : $firstname . ' ' . $lastname; ?></h1>
                         <div class="text-end mt-1">
                             <p class="mb-0"><strong>23</strong> Ratings</p>
                             <p class="mb-0"><strong>6</strong> Reviews</p>
                         </div>
                     </div>
-                    <p class="mb-3"><?php echo $age !== '' ? $age : '29'; ?> years. <?php echo htmlspecialchars($pronouns, ENT_QUOTES, 'UTF-8'); ?>.</p>
+                    <?php if ($age !== '' || $pronouns !== 'None') { ?>
+                        <p class="mb-3"><?php echo $age !== '' ? $age . ' years' : ''; ?><?php echo $pronouns !== 'None' ? ($age !== '' ? '. ' : '') . $pronouns : ''; ?>.</p>
+                    <?php } ?>
                     <p class="text-secondary profile-bio">
-                        <?php echo $bio !== '' ? $bio : "Hey, I'm Jane! I enjoy trying new scents and seeing how they actually wear day to day. I share quick, honest impressions and love hearing what others are into."; ?>
+                        <?php echo $bio !== '' ? $bio : "Tell us about yourself!"; ?>
                     </p>
                 </div>
             </div>
@@ -217,7 +238,7 @@ require_once 'assets/includes/header.php';
         <div class="row g-0 m-0 top-notes-row">
             <div class="col-6 text-white d-flex flex-column align-items-start pt-5 ps-5">
                 <div class="ps-5 mt-5 ms-5">
-                    <h2 class="fs-1 mb-5">Top notes for Jane</h2>
+                    <h2 class="fs-1 mb-5">Top notes for <?php echo $firstname; ?></h2>
                     <h3 class="fs-5 mb-4">Sea Water</h3>
                     <h3 class="fs-5 mb-4">Bergamotte</h3>
                     <h3 class="fs-5 mb-4">Lemon Verbena</h3>
@@ -239,7 +260,7 @@ require_once 'assets/includes/header.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!--Form with profile image upload, name, age, pronouns, and bio-->
-                <form action="assets/functions/insert.php" method="post">
+                <form action="assets/functions/insert.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="profile_image" class="form-label">Profile Image</label>
@@ -247,11 +268,11 @@ require_once 'assets/includes/header.php';
                         </div>
                         <div class="mb-3">
                             <label for="display_name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="display_name" name="display_name" maxlength="100" value="<?php echo $display_name; ?>">
+                            <input type="text" class="form-control" id="display_name" name="display_name" maxlength="100" value="<?php echo $display_name !== '' ? $display_name : $firstname . ' ' . $lastname; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="age" class="form-label">Age</label>
-                            <input type="number" class="form-control" id="age" name="age" min="1" max="120" value="<?php echo $age !== '' ? $age : '29'; ?>">
+                            <input type="number" class="form-control" id="age" name="age" min="1" max="120" value="<?php echo $age; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="pronouns" class="form-label">Pronouns</label>
@@ -264,7 +285,7 @@ require_once 'assets/includes/header.php';
                         </div>
                         <div>
                             <label for="bio" class="form-label">Bio</label>
-                            <textarea class="form-control" id="bio" name="bio" rows="4"><?php echo $bio !== '' ? $bio : 'Text'; ?></textarea>
+                            <textarea class="form-control" id="bio" name="bio" rows="4"><?php echo $bio !== '' ? $bio : 'Tell us about yourself!'; ?></textarea>
                         </div>
                     </div>
                     <!--Footer with cancel and save buttons-->

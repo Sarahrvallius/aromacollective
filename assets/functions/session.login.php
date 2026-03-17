@@ -25,6 +25,7 @@ if (isset($_POST['login'])) {
     $stmt->bindValue(':password', $password);
     $stmt->execute();
 
+<<<<<<< HEAD
     //counts the number of rows that match the query
     $count = $stmt->rowCount();
     //checks wether user exist 
@@ -41,6 +42,16 @@ if (isset($_POST['login'])) {
         //redirect to index.php with error message if user does not exist
     } else {
         header('Location: ../../index.php?action=error');
+=======
+    $user = $stmt->fetch();
+
+    if ($user) {
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: profile.php');
+>>>>>>> 7de5083a972f5744c400d0c2a59dec01e32d8b07
         exit();
     }
+
+    header('Location: signin.php?action=invalid');
+    exit();
 }
