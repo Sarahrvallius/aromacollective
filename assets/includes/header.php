@@ -37,7 +37,7 @@ $isSigninActive = $currentPage === 'signin.php';
 <body>
     <nav class="navbar navbar-expand-lg bg-offwhite">
         <div class="container py-2">
-            <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
+            <a class="navbar-brand fw-semibold font-heading" href="index.php">Aroma Collective</a>
 
             <div class="ms-auto d-flex gap-3">
                 <a class="text-decoration-none text-dark<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
