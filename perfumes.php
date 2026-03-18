@@ -4,6 +4,13 @@ require_once 'assets/includes/display_errors.php';
 // includes database connection
 require_once 'assets/config/db.php';
 
+// start session to get logged in user id
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+$loggedInUserId = isset($_SESSION['user_id']) ? (int) $_SESSION['user_id'] : 0;
+
 // selected perfume from the library page
 $selectedPerfume = $_GET['perfume'] ?? 'woodsage';
 
@@ -99,11 +106,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         } else {
             $stmt = $dbh->prepare("
-                INSERT INTO reviews (perfume_id, user_name, rating, review_text)
-                VALUES (:perfume_id, :user_name, :rating, :review_text)
+                INSERT INTO reviews (perfume_id, user_id, user_name, rating, review_text)
+                VALUES (:perfume_id, :user_id, :user_name, :rating, :review_text)
             ");
             $stmt->execute([
                 ':perfume_id' => $perfume['id'],
+                ':user_id' => $loggedInUserId,
                 ':user_name' => $userName,
                 ':rating' => $rating,
                 ':review_text' => $reviewText
@@ -139,7 +147,8 @@ foreach ($reviews as $review) {
 $averageRating = $reviewCount > 0 ? round($totalRating / $reviewCount, 1) : 0;
 
 // displays filled and empty stars based on rating
-function renderStars($rating) {
+function renderStars($rating)
+{
     $output = '';
 
     for ($i = 1; $i <= 5; $i++) {
@@ -183,8 +192,7 @@ require_once 'assets/includes/header.php';
                 <img
                     src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
                     alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                    class="perfumes-hero-image img-fluid"
-                >
+                    class="perfumes-hero-image img-fluid">
             </div>
 
             <div class="text-center mb-5">
@@ -235,16 +243,14 @@ require_once 'assets/includes/header.php';
                                             <div class="d-flex gap-2">
                                                 <a
                                                     href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
-                                                    class="btn btn-sm btn-outline-dark"
-                                                >
+                                                    class="btn btn-sm btn-outline-dark">
                                                     Edit
                                                 </a>
 
                                                 <a
                                                     href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
                                                     class="btn btn-sm btn-outline-danger"
-                                                    onclick="return confirm('Are you sure you want to delete this review?');"
-                                                >
+                                                    onclick="return confirm('Are you sure you want to delete this review?');">
                                                     Delete
                                                 </a>
                                             </div>
@@ -286,8 +292,7 @@ require_once 'assets/includes/header.php';
                                     name="user_name"
                                     class="form-control"
                                     placeholder="Enter your name"
-                                    value="<?php echo htmlspecialchars($editReview['user_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-                                >
+                                    value="<?php echo htmlspecialchars($editReview['user_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             </div>
 
                             <div class="mb-3">
@@ -308,8 +313,7 @@ require_once 'assets/includes/header.php';
                                     name="review_text"
                                     class="form-control"
                                     rows="5"
-                                    placeholder="Write your thoughts about this fragrance..."
-                                ><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                                    placeholder="Write your thoughts about this fragrance..."><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                             </div>
 
                             <div class="text-center d-flex justify-content-center gap-2 flex-wrap">
@@ -320,8 +324,7 @@ require_once 'assets/includes/header.php';
                                 <?php if ($editReview): ?>
                                     <a
                                         href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>#write-review"
-                                        class="btn btn-outline-secondary px-4 py-2"
-                                    >
+                                        class="btn btn-outline-secondary px-4 py-2">
                                         Cancel
                                     </a>
                                 <?php endif; ?>
