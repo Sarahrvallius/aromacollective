@@ -1,4 +1,4 @@
-    <footer class="library-footer-panel mt-5">
+    <footer class="library-footer-panel">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="fw-semibold" style="font-family: 'Bodoni Moda', serif;">
                 &copy; Aroma Collective

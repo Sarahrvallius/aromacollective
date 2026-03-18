@@ -33,7 +33,7 @@ $filteredPerfumes = $stmt->fetchAll();
 ?>
 
 <main class="bg-offwhite">
-    <section class="py-5">
+    <section class="pt-5">
         <div class="container">
             <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-4">
                 <div>

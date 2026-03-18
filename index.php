@@ -181,10 +181,6 @@ require_once 'assets/includes/header.php'; // includes header
             </div>
         </div>
     </section>
-
-    <!-- BEIGE BLOCK -->
-    <section class="bg-beige beige-block"></section>
-
 </main>
 
 <?php
