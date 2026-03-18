@@ -157,18 +157,6 @@ function renderStars($rating) {
 require_once 'assets/includes/header.php';
 ?>
 
-<nav class="navbar navbar-expand-lg bg-offwhite">
-    <div class="container py-2">
-        <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
-
-        <div class="ms-auto d-flex gap-3">
-            <a class="text-decoration-none text-dark" href="#">About us</a>
-            <a class="text-decoration-none text-dark fw-semibold" href="library.php">Perfumes</a>
-            <a class="text-decoration-none text-dark" href="profile.php">Profile</a>
-        </div>
-    </div>
-</nav>
-
 <main class="bg-offwhite">
     <section class="py-5">
         <div class="container perfumes-page-container">
