@@ -52,7 +52,11 @@ $display_name = $profile['display_name'] ?? '';
 $age = !empty($profile['age']) ? $profile['age'] : '';
 $pronouns = $profile['pronouns'] ?? 'None';
 $bio = $profile['bio'] ?? '';
-$profile_image = $profile['profile_image'] ?? 'profiles/placeholder-img.svg';
+$profile_image = $profile['profile_image'] ?? '';
+// If profile image is empty, none, or file doesn't exist, use placeholder
+if ($profile_image === '' || $profile_image === 'none' || !file_exists(__DIR__ . '/assets/images/' . $profile_image)) {
+    $profile_image = 'profiles/placeholder-img.svg';
+}
 
 // includes header
 require_once 'assets/includes/header.php';

@@ -58,53 +58,6 @@ button {
 }
 
 /* ======================================
-   PROFILE.PHP
-====================================== */
-
-/*Profile - Image size*/
-.profile-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-}
-
-/*Profile - Bio width*/
-.profile-bio {
-    max-width: 450px;
-}
-
-/*Reviews - Paragraph width*/
-.review-text {
-    max-width: 500px;
-}
-
-/*Top notes - Image cover fit*/
-.img-cover {
-    object-fit: cover;
-}
-
-/*Top notes section - fixed height*/
-.top-notes-row {
-    height: 450px;
-}
-
-/* ======================================
-   ABOUT.PHP
-====================================== */
-
-/*Fixed aspect ratio for all images in carousel*/
-.about-silhouette-ratio {
-    aspect-ratio: 914 / 1280;
-    overflow: hidden;
-}
-
-/*Fixed size for hero image*/
-.img-size {
-    width: 75%;
-    height: auto;
-}
-
-/* ======================================
    INDEX.PHP
 ====================================== */
 
@@ -119,9 +72,7 @@ button {
     max-width: 320px;
 }
 
-/* ======================================
-   HERO
-====================================== */
+/* HERO */
 
 .hero {
     position: relative;
@@ -170,9 +121,7 @@ button {
     color: rgba(0, 0, 0, 0.5);
 }
 
-/* ======================================
-   HOW IT WORKS
-====================================== */
+/* HOW IT WORKS */
 
 .how-step {
     display: flex;
@@ -197,9 +146,7 @@ button {
     font-weight: 600;
 }
 
-/* ======================================
-   TRENDING
-====================================== */
+/* TRENDING */
 
 .trending-section {
     background-color: #681018;
@@ -231,9 +178,7 @@ button {
     text-decoration: underline;
 }
 
-/* ======================================
-   COMMUNITY
-====================================== */
+/* COMMUNITY */
 
 .community-section {
     background-color: #F2F1EE;
@@ -299,10 +244,173 @@ button {
     background: rgba(0, 0, 0, 0.85);
 }
 
+
 /* ======================================
-   BEIGE BLOCK
+   PROFILE.PHP
 ====================================== */
 
-.beige-block {
-    height: 180px;
+/*Profile - Image size*/
+.profile-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/*Profile - Bio width*/
+.profile-bio {
+    max-width: 450px;
+}
+
+/*Reviews - Paragraph width*/
+.review-text {
+    max-width: 500px;
+}
+
+/*Top notes - Image cover fit*/
+.img-cover {
+    object-fit: cover;
+}
+
+/*Top notes section - fixed height*/
+.top-notes-row {
+    height: 450px;
+}
+
+/* ======================================
+   ABOUT.PHP
+====================================== */
+
+/*Fixed aspect ratio for all images in carousel*/
+.about-silhouette-ratio {
+    aspect-ratio: 914 / 1280;
+    overflow: hidden;
+}
+
+/*Fixed size for hero image*/
+.img-size {
+    width: 75%;
+    height: auto;
+}
+
+/* ======================================
+   LIBRARY.PHP
+====================================== */
+
+.library-title {
+    font-size: 3rem;
+    line-height: 1.1;
+}
+
+.library-search-input {
+    width: 250px;
+}
+
+.library-panel {
+    background-color: #d4d2d3;
+    padding: 55px 0;
+}
+
+.library-perfume-card {
+    transition: transform 0.2s ease;
+}
+
+.library-perfume-card:hover {
+    transform: translateY(-3px);
+}
+
+.library-perfume-image {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background-color: #ffffff;
+}
+
+.library-perfume-name {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.library-footer-panel {
+    background-color: #B28F6F;
+    padding: 25px 0;
+}
+
+.library-social-link:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 991.98px) {
+    .library-title {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .library-title {
+        font-size: 2rem;
+    }
+
+    .library-search-form {
+        width: 100%;
+    }
+
+    .library-search-input {
+        width: 100%;
+    }
+}
+
+.library-brand {
+    font-family: 'Bodoni Moda', serif;
+}
+
+/* PERFUMES */
+
+.perfumes-brand {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.perfumes-title {
+    font-size: 3rem;
+}
+
+.perfumes-subtitle {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.perfumes-category-badge {
+    background-color: #c49a6c;
+    color: #ffffff;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.perfumes-hero-image {
+    max-width: 380px;
+    border-radius: 20px;
+}
+
+.perfumes-info-box,
+.perfumes-review-card,
+.perfumes-review-form-box {
+    background-color: #f3f1ee;
+    border-radius: 24px;
+}
+
+.perfumes-profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #d8d5d2;
+}
+
+.perfumes-star {
+    font-size: 1.4rem;
+    color: #b8b8b8;
+}
+
+.perfumes-star-filled {
+    color: #c49a6c;
 }
