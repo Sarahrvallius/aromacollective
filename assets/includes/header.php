@@ -10,6 +10,13 @@ require_once 'assets/includes/display_errors.php';
 require_once 'assets/config/db.php';
 //procces loginform
 require_once 'assets/functions/session.login.php';
+
+// to determine which nav link is active
+$currentPage = basename($_SERVER['PHP_SELF'] ?? '');
+$isAboutActive = $currentPage === 'about.php';
+$isPerfumesActive = in_array($currentPage, ['library.php', 'perfumes.php'], true);
+$isProfileActive = $currentPage === 'profile.php';
+$isSigninActive = $currentPage === 'signin.php';
 ?>
 
 <head>
@@ -28,24 +35,24 @@ require_once 'assets/functions/session.login.php';
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-offwhite">
-    <div class="container py-2">
-        <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
+    <nav class="navbar navbar-expand-lg bg-offwhite">
+        <div class="container py-2">
+            <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
 
-        <div class="ms-auto d-flex gap-3">
-            <a class="text-decoration-none text-dark" href="#">About us</a>
-            <a class="text-decoration-none text-dark fw-semibold" href="library.php">Perfumes</a>
-            <!-- check if user is logged in, if so show profile and logout, if not show login -->
-            <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
-                <a class="text-decoration-none text-dark" href="profile.php">
-                    <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Profile
-                </a>
-                <a class="text-decoration-none text-dark" href="assets/functions/logout.php">Log out</a>
-            <?php } else { ?>
-                <a class="text-decoration-none text-dark" href="signin.php">
-                    <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Log in
-                </a>
-            <?php } ?>
+            <div class="ms-auto d-flex gap-3">
+                <a class="text-decoration-none text-dark<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
+                <a class="text-decoration-none text-dark<?php echo $isPerfumesActive ? ' fw-semibold' : ''; ?>" href="library.php">Perfumes</a>
+                <!-- check if user is logged in, if so show profile and logout, if not show login -->
+                <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
+                    <a class="text-decoration-none text-dark<?php echo $isProfileActive ? ' fw-semibold' : ''; ?>" href="profile.php">
+                        <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Profile
+                    </a>
+                    <a class="text-decoration-none text-dark" href="assets/functions/logout.php">Log out</a>
+                <?php } else { ?>
+                    <a class="text-decoration-none text-dark<?php echo $isSigninActive ? ' fw-semibold' : ''; ?>" href="signin.php">
+                        <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Log in
+                    </a>
+                <?php } ?>
+            </div>
         </div>
-    </div>
     </nav>

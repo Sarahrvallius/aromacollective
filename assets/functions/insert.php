@@ -53,8 +53,13 @@ if (isset($_POST['save_profile'])) {
     $check_stmt->execute();
     $profile_exists = $check_stmt->fetch();
 
-    // Keep old image if profile already exists
-    if ($profile_exists && !empty($profile_exists['profile_image'])) {
+    // Keep old image only if it exists on disk
+    if (
+        $profile_exists &&
+        !empty($profile_exists['profile_image']) &&
+        $profile_exists['profile_image'] !== 'none' &&
+        file_exists(__DIR__ . '/../images/' . $profile_exists['profile_image'])
+    ) {
         $profile_image = $profile_exists['profile_image'];
     }
 
