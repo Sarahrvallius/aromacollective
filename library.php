@@ -32,18 +32,6 @@ if ($search !== '') {
 $filteredPerfumes = $stmt->fetchAll();
 ?>
 
-<nav class="navbar navbar-expand-lg bg-offwhite">
-    <div class="container py-2">
-        <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
-
-        <div class="ms-auto d-flex gap-3">
-            <a class="text-decoration-none text-dark" href="#">About us</a>
-            <a class="text-decoration-none text-dark fw-semibold" href="library.php">Perfumes</a>
-            <a class="text-decoration-none text-dark" href="profile.php">Profile</a>
-        </div>
-    </div>
-</nav>
-
 <main class="bg-offwhite">
     <section class="py-5">
         <div class="container">
@@ -97,28 +85,6 @@ $filteredPerfumes = $stmt->fetchAll();
             </div>
         </div>
     </section>
-
-    <footer class="library-footer-panel mt-5">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="fw-semibold" style="font-family: 'Bodoni Moda', serif;">
-                &copy; Aroma Collective
-            </div>
-
-            <div class="d-flex align-items-center gap-3">
-                <span style="font-family: 'Open Sans', sans-serif;">Social media</span>
-                <a href="#" class="text-dark library-social-link" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="#" class="text-dark library-social-link" aria-label="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="#" class="text-dark library-social-link" aria-label="X">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
 </main>
 
 <?php
