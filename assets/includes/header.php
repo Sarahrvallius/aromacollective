@@ -17,6 +17,7 @@ $isAboutActive = $currentPage === 'about.php';
 $isPerfumesActive = in_array($currentPage, ['library.php', 'perfumes.php'], true);
 $isProfileActive = $currentPage === 'profile.php';
 $isSigninActive = $currentPage === 'signin.php';
+$isSignupActive = $currentPage === 'add.php';
 ?>
 
 <head>
@@ -37,11 +38,16 @@ $isSigninActive = $currentPage === 'signin.php';
 <body>
     <nav class="navbar navbar-expand-lg bg-offwhite">
         <div class="container py-2">
+            <!-- icon -->
+            <a class="navbar-brand" href="index.php">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+            </a>
+            <!-- brand name -->
             <a class="navbar-brand fw-semibold font-heading" href="index.php">Aroma Collective</a>
-
+            <!-- nav links with active state bold -->
             <div class="ms-auto d-flex gap-3">
-                <a class="text-decoration-none text-dark<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
-                <a class="text-decoration-none text-dark<?php echo $isPerfumesActive ? ' fw-semibold' : ''; ?>" href="library.php">Perfumes</a>
+                <a class="text-decoration-none text-dark me-1<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
+                <a class="text-decoration-none text-dark me-5 pe-5<?php echo $isPerfumesActive ? ' fw-semibold' : ''; ?>" href="library.php">Perfumes</a>
                 <!-- check if user is logged in, if so show profile and logout, if not show login -->
                 <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
                     <a class="text-decoration-none text-dark<?php echo $isProfileActive ? ' fw-semibold' : ''; ?>" href="profile.php">
@@ -49,8 +55,11 @@ $isSigninActive = $currentPage === 'signin.php';
                     </a>
                     <a class="text-decoration-none text-dark" href="assets/functions/logout.php">Log out</a>
                 <?php } else { ?>
-                    <a class="text-decoration-none text-dark<?php echo $isSigninActive ? ' fw-semibold' : ''; ?>" href="signin.php">
-                        <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Log in
+                    <a class="text-decoration-none text-dark me-1<?php echo $isSigninActive ? ' fw-semibold' : ''; ?>" href="signin.php">
+                        <i class="fa-solid fa-user me-1"></i>Log in
+                    </a>
+                    <a class="text-decoration-none text-dark<?php echo $isSignupActive ? ' fw-semibold' : ''; ?>" href="add.php">
+                        <i class="fa-solid fa-circle-plus me-1"></i>Sign up
                     </a>
                 <?php } ?>
             </div>
