@@ -269,70 +269,88 @@ require_once 'assets/includes/header.php';
                 </div>
             </section>
 
-            <section class="row justify-content-center" id="write-review">
-                <div class="col-12 col-lg-8">
-                    <div class="perfumes-review-form-box p-4 p-md-5">
-                        <h2 class="h4 mb-4 text-center">
-                            <?php echo $editReview ? 'Edit your review' : 'Share your thoughts about this fragrance'; ?>
-                        </h2>
+            <!-- review form -->
+            <?php
+            // check if user is logged in, if so show review form
+            if (isset($_SESSION['user_id'])):
+            ?>
+                <section class="row justify-content-center" id="write-review">
+                    <div class="col-12 col-lg-8">
+                        <div class="perfumes-review-form-box p-4 p-md-5">
+                            <h2 class="h4 mb-4 text-center">
+                                <?php echo $editReview ? 'Edit your review' : 'Share your thoughts about this fragrance'; ?>
+                            </h2>
 
-                        <?php if ($error !== ''): ?>
-                            <div class="alert alert-danger mb-3">
-                                <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
-                            </div>
-                        <?php endif; ?>
+                            <?php if ($error !== ''): ?>
+                                <div class="alert alert-danger mb-3">
+                                    <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
+                                </div>
+                            <?php endif; ?>
 
-                        <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>#write-review">
-                            <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
+                            <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>#write-review">
+                                <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
 
-                            <div class="mb-3">
-                                <label class="form-label">Your name</label>
-                                <input
-                                    type="text"
-                                    name="user_name"
-                                    class="form-control"
-                                    placeholder="Enter your name"
-                                    value="<?php echo htmlspecialchars($editReview['user_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Your name</label>
+                                    <input
+                                        type="text"
+                                        name="user_name"
+                                        class="form-control"
+                                        placeholder="Enter your name"
+                                        value="<?php echo htmlspecialchars($editReview['user_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Your rating</label>
-                                <select name="rating" class="form-select">
-                                    <option value="">Choose rating</option>
-                                    <option value="5" <?php echo (($editReview['rating'] ?? '') == 5) ? 'selected' : ''; ?>>5 stars</option>
-                                    <option value="4" <?php echo (($editReview['rating'] ?? '') == 4) ? 'selected' : ''; ?>>4 stars</option>
-                                    <option value="3" <?php echo (($editReview['rating'] ?? '') == 3) ? 'selected' : ''; ?>>3 stars</option>
-                                    <option value="2" <?php echo (($editReview['rating'] ?? '') == 2) ? 'selected' : ''; ?>>2 stars</option>
-                                    <option value="1" <?php echo (($editReview['rating'] ?? '') == 1) ? 'selected' : ''; ?>>1 star</option>
-                                </select>
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Your rating</label>
+                                    <select name="rating" class="form-select">
+                                        <option value="">Choose rating</option>
+                                        <option value="5" <?php echo (($editReview['rating'] ?? '') == 5) ? 'selected' : ''; ?>>5 stars</option>
+                                        <option value="4" <?php echo (($editReview['rating'] ?? '') == 4) ? 'selected' : ''; ?>>4 stars</option>
+                                        <option value="3" <?php echo (($editReview['rating'] ?? '') == 3) ? 'selected' : ''; ?>>3 stars</option>
+                                        <option value="2" <?php echo (($editReview['rating'] ?? '') == 2) ? 'selected' : ''; ?>>2 stars</option>
+                                        <option value="1" <?php echo (($editReview['rating'] ?? '') == 1) ? 'selected' : ''; ?>>1 star</option>
+                                    </select>
+                                </div>
 
-                            <div class="mb-4">
-                                <label class="form-label">Your review</label>
-                                <textarea
-                                    name="review_text"
-                                    class="form-control"
-                                    rows="5"
-                                    placeholder="Write your thoughts about this fragrance..."><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                            </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Your review</label>
+                                    <textarea
+                                        name="review_text"
+                                        class="form-control"
+                                        rows="5"
+                                        placeholder="Write your thoughts about this fragrance..."><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                                </div>
 
-                            <div class="text-center d-flex justify-content-center gap-2 flex-wrap">
-                                <button type="submit" class="btn btn-dark px-4 py-2">
-                                    <?php echo $editReview ? 'Update review' : 'Post review'; ?>
-                                </button>
+                                <div class="text-center d-flex justify-content-center gap-2 flex-wrap">
+                                    <button type="submit" class="btn btn-dark px-4 py-2">
+                                        <?php echo $editReview ? 'Update review' : 'Post review'; ?>
+                                    </button>
 
-                                <?php if ($editReview): ?>
-                                    <a
-                                        href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>#write-review"
-                                        class="btn btn-outline-secondary px-4 py-2">
-                                        Cancel
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </form>
+                                    <?php if ($editReview): ?>
+                                        <a
+                                            href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>#write-review"
+                                            class="btn btn-outline-secondary px-4 py-2">
+                                            Cancel
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php else: // if not logged in, this will show 
+            ?>
+
+                <section class="row justify-content-center">
+                    <div class="col-12 col-lg-8 text-center p-5 border bg-light">
+                        <h2 class="h5 mb-3">Want to share your thoughts?</h2>
+                        <p class="mb-4 text-muted">You need to be logged in to write a review.</p>
+                        <a href="signin.php" class="btn btn-outline-dark px-4">Sign In to Review</a>
+                    </div>
+                </section>
+
+            <?php endif; //end the check
+            ?>
         </div>
     </section>
 </main>
