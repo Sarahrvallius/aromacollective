@@ -43,7 +43,7 @@ $isSignupActive = $currentPage === 'add.php';
                 <i class="fa-solid fa-spray-can-sparkles"></i>
             </a>
             <!-- brand name -->
-            <a class="navbar-brand fw-semibold library-brand" href="index.php">Aroma Collective</a>
+            <a class="navbar-brand fw-semibold font-heading" href="index.php">Aroma Collective</a>
             <!-- nav links with active state bold -->
             <div class="ms-auto d-flex gap-3">
                 <a class="text-decoration-none text-dark me-1<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
