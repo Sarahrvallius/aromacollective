@@ -13,7 +13,7 @@ require_once 'assets/includes/header.php'; // includes header
             case 'success':
 
                 // display success message
-                echo '<div class="alert alert-success text-center" role="alert">
+                echo '<div class="alert alert-success text-center mb-0" role="alert">
                         You have successfully logged in!
                       </div>';
                 break;
@@ -21,7 +21,7 @@ require_once 'assets/includes/header.php'; // includes header
             case 'error':
 
                 // display error message
-                echo '<div class="alert alert-danger text-center" role="alert">
+                echo '<div class="alert alert-danger text-center mb-0" role="alert">
                         Incorrect email or password. Please try again.
                       </div>';
                 break;
@@ -29,14 +29,14 @@ require_once 'assets/includes/header.php'; // includes header
             case 'empty':
 
                 // display error message
-                echo '<div class="alert alert-warning text-center" role="alert">
+                echo '<div class="alert alert-warning text-center mb-0" role="alert">
                         Please fill in both email and password fields.
                       </div>';
                 break;
 
             case 'logout':
                 // display logout message
-                echo '<div class="alert alert-info text-center" role="alert">
+                echo '<div class="alert alert-info text-center mb-0" role="alert">
                         You have been logged out.
                       </div>';
                 break;
