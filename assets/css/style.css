@@ -31,6 +31,14 @@ footer {
     background-color: #DEC2A2;
 }
 
+.text-red {
+    color: #681018;
+}
+
+.text-beige {
+    color: #DEC2A2;
+}
+
 /* ======================================
    GLOBAL FONT STYLES
 ====================================== */
@@ -330,11 +338,6 @@ button {
     letter-spacing: 1px;
 }
 
-.library-footer-panel {
-    background-color: #B28F6F;
-    padding: 25px 0;
-}
-
 .library-social-link:hover {
     opacity: 0.6;
 }
@@ -359,9 +362,6 @@ button {
     }
 }
 
-.library-brand {
-    font-family: 'Bodoni Moda', serif;
-}
 
 /* PERFUMES */
 
