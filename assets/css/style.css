@@ -6,13 +6,24 @@ body {
     height: 100%;
 }
 
+/* Saves space for footer */
 main {
     min-height: calc(100vh - 5rem);
 }
 
-/* Footer */
 footer {
     height: 5rem;
+}
+
+/* Styling for headers dropdown */
+.profile-hover-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.profile-hover-dropdown .dropdown-item:active,
+.profile-hover-dropdown .dropdown-item.active {
+    background-color: #681018;
+    color: #fff;
 }
 
 /* ======================================
