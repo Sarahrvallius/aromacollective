@@ -1,5 +1,5 @@
 <?php
-//init session management, måste vara överst!
+//init session management, must be first!
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -8,7 +8,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
-//procces loginform
+//process login form
 require_once 'assets/functions/session.login.php';
 
 // to determine which nav link is active
@@ -17,11 +17,13 @@ $isAboutActive = $currentPage === 'about.php';
 $isPerfumesActive = in_array($currentPage, ['library.php', 'perfumes.php'], true);
 $isProfileActive = $currentPage === 'profile.php';
 $isSigninActive = $currentPage === 'signin.php';
+$isSignupActive = $currentPage === 'add.php';
 ?>
 
 <head>
     <meta charset="utf-8">
     <title>Aroma Collective</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--Font Awesome CSS-->
@@ -37,20 +39,36 @@ $isSigninActive = $currentPage === 'signin.php';
 <body>
     <nav class="navbar navbar-expand-lg bg-offwhite">
         <div class="container py-2">
+            <!-- icon -->
+            <a class="navbar-brand me-2" href="index.php">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+            </a>
+            <!-- brand name -->
             <a class="navbar-brand fw-semibold font-heading" href="index.php">Aroma Collective</a>
-
-            <div class="ms-auto d-flex gap-3">
-                <a class="text-decoration-none text-dark<?php echo $isAboutActive ? ' fw-semibold' : ''; ?>" href="about.php">About us</a>
-                <a class="text-decoration-none text-dark<?php echo $isPerfumesActive ? ' fw-semibold' : ''; ?>" href="library.php">Perfumes</a>
+            <!-- nav links with active state bold -->
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <a class="text-decoration-none me-1 <?php echo $isAboutActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="about.php">About us</a>
+                <a class="text-decoration-none me-5 <?php echo $isPerfumesActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="library.php">Perfumes</a>
                 <!-- check if user is logged in, if so show profile and logout, if not show login -->
                 <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
-                    <a class="text-decoration-none text-dark<?php echo $isProfileActive ? ' fw-semibold' : ''; ?>" href="profile.php">
-                        <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Profile
-                    </a>
-                    <a class="text-decoration-none text-dark" href="assets/functions/logout.php">Log out</a>
+                    <div class="dropdown profile-hover-dropdown me-3">
+                        <a class="text-decoration-none dropdown-toggle d-inline-flex align-items-center py-2 px-1 <?php echo $isProfileActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="profile.php" role="button">
+                            <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Profile
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="profile.php">Profile</a>
+                            <a class="dropdown-item mb-0" href="#">Ratings</a> <!-- Not functional -->
+                            <a class="dropdown-item mb-0" href="#">Reviews</a> <!-- Not functional -->
+                            <a class="dropdown-item mb-0" href="#">Settings</a> <!-- Not functional -->
+                            <a class="dropdown-item" href="assets/functions/logout.php">Log out</a>
+                        </div>
+                    </div>
                 <?php } else { ?>
-                    <a class="text-decoration-none text-dark<?php echo $isSigninActive ? ' fw-semibold' : ''; ?>" href="signin.php">
-                        <i class="fa-solid fa-user me-1" aria-hidden="true"></i>Log in
+                    <a class="text-decoration-none me-1 <?php echo $isSigninActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="signin.php">
+                        <i class="fa-solid fa-user me-1"></i>Log in
+                    </a>
+                    <a class="text-decoration-none <?php echo $isSignupActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="add.php">
+                        <i class="fa-solid fa-circle-plus me-1"></i>Sign up
                     </a>
                 <?php } ?>
             </div>
