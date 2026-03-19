@@ -6,6 +6,7 @@ require_once 'assets/config/db.php';
 // includes header
 require_once 'assets/includes/header.php';
 
+
 // gets the search input from the search bar
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -30,6 +31,8 @@ if ($search !== '') {
 }
 
 $filteredPerfumes = $stmt->fetchAll();
+
+
 ?>
 
 <!--LIBRARY PAGE-->
@@ -43,14 +46,13 @@ $filteredPerfumes = $stmt->fetchAll();
 
                 <div class="col-12 col-lg-4">
                     <form class="d-flex gap-2 mt-3" method="GET" action="library.php">
-                    <input
-                        class="form-control"
-                        type="search"
-                        name="search"
-                        value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
-                        placeholder="Search by name, brand, or notes..."
-                    >
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <input
+                            class="form-control"
+                            type="search"
+                            name="search"
+                            value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                            placeholder="Search by name, brand, or notes...">
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -65,13 +67,11 @@ $filteredPerfumes = $stmt->fetchAll();
                             <div class="col-6 col-md-3 col-lg-2 mb-5">
                                 <a
                                     href="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>"
-                                    class="perfume-card d-block text-decoration-none"
-                                >
+                                    class="perfume-card d-block text-decoration-none">
                                     <img
                                         src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
                                         alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                                        class="perfume-image img-fluid w-100 d-block"
-                                    >
+                                        class="perfume-image img-fluid w-100 d-block">
                                     <div class="library-perfume-name text-dark text-uppercase text-center mt-2">
                                         <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
                                     </div>
