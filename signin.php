@@ -8,7 +8,7 @@ require_once 'assets/config/db.php';
 ?>
 
 
-<main class="bg-light">
+<main class="bg-offwhite">
 
     <div class="container">
         <div class="row min-vh-100 justify-content-center align-items-center py-5">
@@ -17,24 +17,24 @@ require_once 'assets/config/db.php';
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-md-5">
 
-                        <h2 class="text-center mb-2 fw-bold" style="font-family: 'Bodoni Moda', serif; color: #7E1A01;">Welcome Back</h2>
+                        <h2 class="text-center mb-2 fw-bold text-red">Welcome Back</h2>
                         <p class="text-center text-muted mb-4 small">Sign in to your Aroma Collective account</p>
 
                         <form action="index.php" method="post">
 
                             <div class="mb-3">
-                                <label for="email" class="form-label small fw-bold text-uppercase" style="letter-spacing: 1px;">Email address</label>
+                                <label for="email" class="form-label small fw-bold text-uppercase">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                             </div>
 
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between">
-                                    <label for="password" class="form-label small fw-bold text-uppercase" style="letter-spacing: 1px;">Password</label>
+                                    <label for="password" class="form-label small fw-bold text-uppercase">Password</label>
                                 </div>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
                             </div>
 
-                            <button type="submit" name="login" class="btn w-100 py-3 fw-bold text-uppercase shadow-sm" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0; letter-spacing: 1px;">
+                            <button type="submit" name="login" class="btn w-100 py-3 fw-bold text-uppercase shadow-sm text-white bg-red">
                                 Sign In
                             </button>
 
@@ -42,7 +42,7 @@ require_once 'assets/config/db.php';
 
                         <div class="mt-4 text-center">
                             <p class="small mb-0 text-muted">New to the collective?
-                                <a href="add.php" class="fw-bold text-decoration-none" style="color: #AE9074;">Create account</a>
+                                <a href="add.php" class="fw-bold text-decoration-none text-beige">Create account</a>
                             </p>
                         </div>
 

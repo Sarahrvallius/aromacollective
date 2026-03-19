@@ -1,11 +1,11 @@
-    <footer class="library-footer-panel">
+    <footer class="bg-beige p-4">
         <div class="container d-flex justify-content-between align-items-center">
-            <div class="fw-semibold" style="font-family: 'Bodoni Moda', serif;">
+            <div class="fw-semibold font-heading">
                 &copy; Aroma Collective
             </div>
 
             <div class="d-flex align-items-center gap-3">
-                <span style="font-family: 'Open Sans', sans-serif;">Social media</span>
+                <span>Social media</span>
                 <a href="#" class="text-dark library-social-link" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>

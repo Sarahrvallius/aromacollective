@@ -9,7 +9,7 @@ require_once 'assets/functions/insert.php';
 require_once 'assets/includes/header.php';
 ?>
 
-<main class="bg-light" class="container"> 
+<main class="bg-offwhite" class="container"> 
 
     <?php //message if account created successfully
     // check if an action is set
@@ -34,7 +34,7 @@ require_once 'assets/includes/header.php';
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4 p-md-5">
 
-                    <h2 class="text-center mb-2 fw-bold" style="font-family: 'Bodoni Moda', serif; color: #7E1A01;">Create Account</h2>
+                    <h2 class="text-center mb-2 fw-bold text-red">Create Account</h2>
                     <p class="text-center text-muted mb-4">Join our fragrance community and start sharing your scent journey.</p>
 
                     <form action="add.php" method="POST">
@@ -72,7 +72,7 @@ require_once 'assets/includes/header.php';
                             <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
                         </div>
 
-                        <button type="submit" name="register" class="btn w-100 py-3 fw-bold text-uppercase" style="background-color: #7E1A01; color: #F2F1EE; border-radius: 0;">
+                        <button type="submit" name="register" class="btn w-100 py-3 fw-bold text-uppercase text-white bg-red">
                             Create account
                         </button>
 
@@ -80,7 +80,7 @@ require_once 'assets/includes/header.php';
 
                     <div class="mt-4 text-center">
                         <p class="small mb-0 text-muted">Already a member?
-                            <a href="signin.php" class="fw-bold text-decoration-none" style="color: #AE9074;">Log in here.</a>
+                            <a href="signin.php" class="fw-bold text-decoration-none text-beige">Log in here.</a>
                         </p>
                     </div>
 
