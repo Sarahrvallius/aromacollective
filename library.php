@@ -32,6 +32,7 @@ if ($search !== '') {
 $filteredPerfumes = $stmt->fetchAll();
 ?>
 
+<!--LIBRARY PAGE-->
 <main class="bg-offwhite">
     <section class="pt-5">
         <div class="container">

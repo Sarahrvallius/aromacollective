@@ -162,6 +162,7 @@ function renderStars($rating)
 
 ?>
 
+<!-- PERFUME DETAIL PAGE -->
 <main class="bg-offwhite">
     <section class="py-5">
         <div class="container perfumes-page-container">

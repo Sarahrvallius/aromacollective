@@ -4,6 +4,9 @@ require_once 'assets/includes/header.php'; // includes header
 ?>
 
 <main>
+
+<!-- SUCCES OR ERROR MESSAGES when logging in -->
+ 
     <?php //message if login successful
     // check if an action is set
     if (isset($_GET['action'])) {
