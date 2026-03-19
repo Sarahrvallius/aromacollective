@@ -3,8 +3,7 @@
 require_once 'assets/includes/display_errors.php';
 // includes database connection
 require_once 'assets/config/db.php';
-// includes header
-require_once 'assets/includes/header.php';
+
 
 $loggedInUserId = isset($_SESSION['user_id']) ? (int) $_SESSION['user_id'] : 0;
 
@@ -158,6 +157,8 @@ function renderStars($rating)
 
     return $output;
 }
+// includes header
+require_once 'assets/includes/header.php';
 
 
 ?>
