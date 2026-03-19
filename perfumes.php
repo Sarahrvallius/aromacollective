@@ -3,11 +3,8 @@
 require_once 'assets/includes/display_errors.php';
 // includes database connection
 require_once 'assets/config/db.php';
-
-// start session to get logged in user id
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
+// includes header
+require_once 'assets/includes/header.php';
 
 $loggedInUserId = isset($_SESSION['user_id']) ? (int) $_SESSION['user_id'] : 0;
 
@@ -41,7 +38,7 @@ if (!$perfume) {
     $perfume = $stmt->fetch();
 }
 
-// delete review
+// delete review from database
 if (isset($_GET['delete_review'])) {
     $reviewId = (int) $_GET['delete_review'];
 
@@ -162,8 +159,7 @@ function renderStars($rating)
     return $output;
 }
 
-// includes header
-require_once 'assets/includes/header.php';
+
 ?>
 
 <main class="bg-offwhite">
@@ -287,9 +283,12 @@ require_once 'assets/includes/header.php';
                                 </div>
                             <?php endif; ?>
 
+
+
                             <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>#write-review">
                                 <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
 
+                                <!-- Namebox-->
                                 <div class="mb-3">
                                     <label class="form-label">Your name</label>
                                     <input
@@ -297,10 +296,16 @@ require_once 'assets/includes/header.php';
                                         name="user_name"
                                         class="form-control"
                                         placeholder="Enter your name"
-                                        value="<?php echo htmlspecialchars($editReview['user_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                                        value="<?php
+                                                // checks if firstname and lastname session variables are set, if so it will show them in the input field, otherwise it will be empty
+                                                if (isset($_SESSION['firstname'], $_SESSION['lastname'])) {
+                                                    echo htmlspecialchars($_SESSION['firstname'] . ' ' . $_SESSION['lastname']);
+                                                }
+                                                ?>">
                                 </div>
 
-                                <div class="mb-3">
+                                <!-- Rating, in stars-->
+                                <div class=" mb-3">
                                     <label class="form-label">Your rating</label>
                                     <select name="rating" class="form-select">
                                         <option value="">Choose rating</option>
@@ -312,6 +317,7 @@ require_once 'assets/includes/header.php';
                                     </select>
                                 </div>
 
+                                <!-- Your review - in text -->
                                 <div class="mb-4">
                                     <label class="form-label">Your review</label>
                                     <textarea
@@ -322,6 +328,8 @@ require_once 'assets/includes/header.php';
                                 </div>
 
                                 <div class="text-center d-flex justify-content-center gap-2 flex-wrap">
+
+                                    <!-- Submit button -->
                                     <button type="submit" class="btn btn-dark px-4 py-2">
                                         <?php echo $editReview ? 'Update review' : 'Post review'; ?>
                                     </button>
@@ -334,10 +342,13 @@ require_once 'assets/includes/header.php';
                                         </a>
                                     <?php endif; ?>
                                 </div>
+
                             </form>
                         </div>
                     </div>
                 </section>
+
+                <!-- If not logged in this information will be shown -->
             <?php else: // if not logged in, this will show 
             ?>
 
@@ -351,9 +362,11 @@ require_once 'assets/includes/header.php';
 
             <?php endif; //end the check
             ?>
+
         </div>
     </section>
 </main>
+
 
 <?php
 // includes footer
