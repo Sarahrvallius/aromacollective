@@ -6,18 +6,14 @@ body {
     height: 100%;
 }
 
-/* Saves space for footer */
-main {
-    min-height: calc(100vh - 5rem);
-}
-
-footer {
-    height: 5rem;
-}
-
 /* Social media links in footer hover effect */
 .social-link:hover {
     opacity: 0.6;
+}
+
+/* Custom width for divider in footer */
+.divider-width {
+    width: 35%;
 }
 
 /* Styling for headers dropdown */
@@ -47,6 +43,7 @@ footer {
     background-color: #ffffff;
 }
 
+
 /* ======================================
    GLOBAL COLORS
 ====================================== */
@@ -75,6 +72,7 @@ footer {
     color: #DEC2A2;
 }
 
+
 /* ======================================
    GLOBAL FONT STYLES
 ====================================== */
@@ -101,191 +99,32 @@ button {
     font-family: 'Bodoni Moda', serif;
 }
 
+
 /* ======================================
    INDEX.PHP
 ====================================== */
 
-.section-title {
-    font-size: 2.2rem;
-    line-height: 1.1;
+/* Hero section - Fixed height and background image */
+.index-hero-section {
+    height: 465px;
+    background-image: url('../images/index-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.section-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 320px;
+.index-hero-section .container-fluid {
+    height: 100%;
 }
 
-/* HERO */
-
-.hero {
-    position: relative;
-    min-height: 540px;
-    overflow: hidden;
-}
-
-.hero-image-placeholder {
-    width: 100%;
-    height: 540px;
-    background-color: #1f1f1f;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 4rem 6rem;
-}
-
-.hero-card {
-    max-width: 340px;
-    color: #fff;
-    text-align: left;
-}
-
-.hero-small {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #fff;
-}
-
-.placeholder-text,
-.placeholder-text-dark {
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-}
-
-.placeholder-text {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.placeholder-text-dark {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-/* HOW IT WORKS */
-
-.how-step {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-}
-
-.how-step p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-.how-icon {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-}
-
-/* TRENDING */
-
-.trending-section {
-    background-color: #681018;
-}
-
-.product-placeholder {
-    width: 100%;
-    max-width: 220px;
-    height: 260px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.product-name {
-    margin-top: 1rem;
-    color: #F2F1EE;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-}
-
-.trending-link {
-    color: #F2F1EE;
-    text-decoration: none;
-}
-
-.trending-link:hover {
-    color: #F2F1EE;
-    text-decoration: underline;
-}
-
-/* COMMUNITY */
-
-.community-section {
-    background-color: #F2F1EE;
-}
-
-.community-left {
-    display: flex;
-    align-items: center;
-    min-height: 620px;
-    background-color: #F2F1EE;
-}
-
-.community-content {
-    max-width: 620px;
-    padding: 5rem 3rem;
-    margin: 0 auto;
-}
-
-.community-title {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-}
-
-.community-line {
-    width: 100%;
-    max-width: 420px;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
-.community-quote {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 1.7rem;
-    line-height: 1.8;
-    margin: 0;
-    max-width: 620px;
-}
-
-.community-meta {
-    margin-top: 2rem;
-    font-size: 0.95rem;
-    color: rgba(0, 0, 0, 0.75);
+/* Community section -Fixed height for carousel */
+.community-carousel-inner {
+    min-height: 320px;
 }
 
 .community-image-placeholder {
     min-height: 620px;
     background-color: #1b1b1b;
-}
-
-.quote-dots {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.dot.active {
-    background: rgba(0, 0, 0, 0.85);
 }
 
 
@@ -298,16 +137,6 @@ button {
     width: 250px;
     height: 250px;
     object-fit: cover;
-}
-
-/*Profile - Bio width*/
-.profile-bio {
-    max-width: 450px;
-}
-
-/*Reviews - Paragraph width*/
-.review-text {
-    max-width: 500px;
 }
 
 /*Top notes - Image cover fit*/
