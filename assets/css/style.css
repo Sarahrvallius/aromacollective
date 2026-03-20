@@ -6,14 +6,43 @@ body {
     height: 100%;
 }
 
-main {
-    min-height: calc(100vh - 5rem);
+/* Social media links in footer hover effect */
+.social-link:hover {
+    opacity: 0.6;
 }
 
-/* Footer */
-footer {
-    height: 5rem;
+/* Custom width for divider in footer */
+.divider-width {
+    width: 35%;
 }
+
+/* Styling for headers dropdown */
+.profile-hover-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.profile-hover-dropdown .dropdown-item:active,
+.profile-hover-dropdown .dropdown-item.active {
+    background-color: #681018;
+    color: #fff;
+}
+
+/* Perfume cards transition effect and dimensions - Library and Profile*/
+.perfume-card {
+    transition: transform 0.2s ease;
+}
+
+.perfume-card:hover {
+    transform: translateY(-3px);
+}
+
+.perfume-image {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background-color: #ffffff;
+}
+
 
 /* ======================================
    GLOBAL COLORS
@@ -30,6 +59,19 @@ footer {
 .bg-beige {
     background-color: #DEC2A2;
 }
+
+.bg-gray {
+    background-color: #d4d2d3;
+}
+
+.text-red {
+    color: #681018;
+}
+
+.text-beige {
+    color: #DEC2A2;
+}
+
 
 /* ======================================
    GLOBAL FONT STYLES
@@ -57,6 +99,35 @@ button {
     font-family: 'Bodoni Moda', serif;
 }
 
+
+/* ======================================
+   INDEX.PHP
+====================================== */
+
+/* Hero section - Fixed height and background image */
+.index-hero-section {
+    height: 465px;
+    background-image: url('../images/index-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.index-hero-section .container-fluid {
+    height: 100%;
+}
+
+/* Community section -Fixed height for carousel */
+.community-carousel-inner {
+    min-height: 320px;
+}
+
+.community-image-placeholder {
+    min-height: 620px;
+    background-color: #1b1b1b;
+}
+
+
 /* ======================================
    PROFILE.PHP
 ====================================== */
@@ -66,16 +137,6 @@ button {
     width: 250px;
     height: 250px;
     object-fit: cover;
-}
-
-/*Profile - Bio width*/
-.profile-bio {
-    max-width: 450px;
-}
-
-/*Reviews - Paragraph width*/
-.review-text {
-    max-width: 500px;
 }
 
 /*Top notes - Image cover fit*/
@@ -88,73 +149,29 @@ button {
     height: 450px;
 }
 
-/* LIBRARY */
+/* ======================================
+   ABOUT.PHP
+====================================== */
 
-.library-title {
-    font-size: 3rem;
-    line-height: 1.1;
+/*Fixed aspect ratio for all images in carousel*/
+.about-silhouette-ratio {
+    aspect-ratio: 914 / 1280;
+    overflow: hidden;
 }
 
-.library-search-input {
-    width: 250px;
+/*Fixed size for hero image*/
+.img-size {
+    width: 75%;
+    height: auto;
 }
 
-.library-panel {
-    background-color: #d4d2d3;
-    padding: 55px 0;
-}
-
-.library-perfume-card {
-    transition: transform 0.2s ease;
-}
-
-.library-perfume-card:hover {
-    transform: translateY(-3px);
-}
-
-.library-perfume-image {
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    background-color: #ffffff;
-}
+/* ======================================
+    LIBRARY.PHP
+====================================== */
 
 .library-perfume-name {
     font-size: 0.75rem;
     letter-spacing: 1px;
-}
-
-.library-footer-panel {
-    background-color: #B28F6F;
-    padding: 25px 0;
-}
-
-.library-social-link:hover {
-    opacity: 0.6;
-}
-
-@media (max-width: 991.98px) {
-    .library-title {
-        font-size: 2.4rem;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .library-title {
-        font-size: 2rem;
-    }
-
-    .library-search-form {
-        width: 100%;
-    }
-
-    .library-search-input {
-        width: 100%;
-    }
-}
-
-.library-brand {
-    font-family: 'Bodoni Moda', serif;
 }
 
 /* PERFUMES */
