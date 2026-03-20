@@ -9,6 +9,8 @@ require_once 'assets/functions/insert.php';
 require_once 'assets/includes/header.php';
 ?>
 
+<!-- JOIN THE COMMUNITY SECTION -->
+
 <main class="bg-offwhite" class="container"> 
 
     <?php //message if account created successfully
@@ -27,7 +29,8 @@ require_once 'assets/includes/header.php';
         }
     }
     ?>
-
+    
+     <!-- Join the Community form -->
     <div class="row min-vh-100 justify-content-center align-items-center py-5">
         <div class="col-12 col-md-8 col-lg-6">
 

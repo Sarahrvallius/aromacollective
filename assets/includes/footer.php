@@ -6,13 +6,13 @@
 
             <div class="d-flex align-items-center gap-3">
                 <span>Social media</span>
-                <a href="#" class="text-dark library-social-link" aria-label="Instagram">
+                <a href="#" class="text-dark social-link" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="#" class="text-dark library-social-link" aria-label="Facebook">
+                <a href="#" class="text-dark social-link" aria-label="Facebook">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
-                <a href="#" class="text-dark library-social-link" aria-label="X">
+                <a href="#" class="text-dark social-link" aria-label="X">
                     <i class="fa-brands fa-x-twitter"></i>
                 </a>
             </div>

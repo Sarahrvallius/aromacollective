@@ -45,10 +45,12 @@ $isSignupActive = $currentPage === 'add.php';
             </a>
             <!-- brand name -->
             <a class="navbar-brand fw-semibold font-heading" href="index.php">Aroma Collective</a>
+
             <!-- nav links with active state bold -->
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a class="text-decoration-none me-1 <?php echo $isAboutActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="about.php">About us</a>
                 <a class="text-decoration-none me-5 <?php echo $isPerfumesActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="library.php">Perfumes</a>
+
                 <!-- check if user is logged in, if so show profile and logout, if not show login -->
                 <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) { ?>
                     <div class="dropdown profile-hover-dropdown me-3">

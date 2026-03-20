@@ -6,13 +6,45 @@ body {
     height: 100%;
 }
 
+/* Saves space for footer */
 main {
     min-height: calc(100vh - 5rem);
 }
 
-/* Footer */
 footer {
     height: 5rem;
+}
+
+/* Social media links in footer hover effect */
+.social-link:hover {
+    opacity: 0.6;
+}
+
+/* Styling for headers dropdown */
+.profile-hover-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.profile-hover-dropdown .dropdown-item:active,
+.profile-hover-dropdown .dropdown-item.active {
+    background-color: #681018;
+    color: #fff;
+}
+
+/* Perfume cards transition effect and dimensions - Library and Profile*/
+.perfume-card {
+    transition: transform 0.2s ease;
+}
+
+.perfume-card:hover {
+    transform: translateY(-3px);
+}
+
+.perfume-image {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background-color: #ffffff;
 }
 
 /* ======================================
@@ -29,6 +61,10 @@ footer {
 
 .bg-beige {
     background-color: #DEC2A2;
+}
+
+.bg-gray {
+    background-color: #d4d2d3;
 }
 
 .text-red {
@@ -301,67 +337,13 @@ button {
 }
 
 /* ======================================
-   LIBRARY.PHP
+    LIBRARY.PHP
 ====================================== */
-
-.library-title {
-    font-size: 3rem;
-    line-height: 1.1;
-}
-
-.library-search-input {
-    width: 250px;
-}
-
-.library-panel {
-    background-color: #d4d2d3;
-    padding: 55px 0;
-}
-
-.library-perfume-card {
-    transition: transform 0.2s ease;
-}
-
-.library-perfume-card:hover {
-    transform: translateY(-3px);
-}
-
-.library-perfume-image {
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    background-color: #ffffff;
-}
 
 .library-perfume-name {
     font-size: 0.75rem;
     letter-spacing: 1px;
 }
-
-.library-social-link:hover {
-    opacity: 0.6;
-}
-
-@media (max-width: 991.98px) {
-    .library-title {
-        font-size: 2.4rem;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .library-title {
-        font-size: 2rem;
-    }
-
-    .library-search-form {
-        width: 100%;
-    }
-
-    .library-search-input {
-        width: 100%;
-    }
-}
-
 
 /* PERFUMES */
 

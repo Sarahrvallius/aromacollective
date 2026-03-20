@@ -7,7 +7,7 @@ require_once 'assets/includes/header.php';
 require_once 'assets/config/db.php';
 ?>
 
-
+<!-- LOGIN SECTION -->
 <main class="bg-offwhite">
 
     <div class="container">

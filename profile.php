@@ -143,7 +143,7 @@ require_once 'assets/includes/header.php';
                         echo '<div class="col">
                             <figure class="text-center mb-0">
                                 <a href="perfumes.php?perfume=' . $favorite['slug'] . '">
-                                    <img src="' . $favorite['image'] . '" class="library-perfume-image library-perfume-card library-perfume-card:hover img-fluid w-100 d-block" alt="' . $favorite['name'] . '">
+                                    <img src="' . $favorite['image'] . '" class="perfume-image perfume-card perfume-card:hover img-fluid w-100 d-block" alt="' . $favorite['name'] . '">
                                 </a>
                                 <figcaption class="mt-2">' . $stars . '</figcaption>
                             </figure>

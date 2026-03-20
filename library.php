@@ -6,6 +6,7 @@ require_once 'assets/config/db.php';
 // includes header
 require_once 'assets/includes/header.php';
 
+
 // gets the search input from the search bar
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -30,45 +31,47 @@ if ($search !== '') {
 }
 
 $filteredPerfumes = $stmt->fetchAll();
+
+
 ?>
 
+<!--LIBRARY PAGE-->
 <main class="bg-offwhite">
     <section class="pt-5">
         <div class="container">
-            <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-4">
-                <div>
-                    <h1 class="m-0 library-title">Discover fragrances</h1>
+            <div class="row align-items-center g-3 mb-4">
+                <div class="col">
+                    <h1 class="m-0 text-nowrap">Discover fragrances</h1>
                 </div>
 
-                <form class="d-flex gap-2 library-search-form" method="GET" action="library.php">
-                    <input
-                        class="form-control library-search-input"
-                        type="search"
-                        name="search"
-                        value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
-                        placeholder="Search by name, brand, or notes..."
-                    >
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                </form>
+                <div class="col-12 col-lg-4">
+                    <form class="d-flex gap-2 mt-3" method="GET" action="library.php">
+                        <input
+                            class="form-control"
+                            type="search"
+                            name="search"
+                            value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                            placeholder="Search by name, brand, or notes...">
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div class="library-panel">
+        <div class="bg-gray py-5">
             <div class="container">
                 <div class="row g-4">
 
                     <?php if (count($filteredPerfumes) > 0): ?>
                         <?php foreach ($filteredPerfumes as $perfume): ?>
-                            <div class="col-6 col-md-3 col-lg-2">
+                            <div class="col-6 col-md-3 col-lg-2 mb-5">
                                 <a
                                     href="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>"
-                                    class="library-perfume-card d-block text-decoration-none"
-                                >
+                                    class="perfume-card d-block text-decoration-none">
                                     <img
                                         src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
                                         alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                                        class="library-perfume-image img-fluid w-100 d-block"
-                                    >
+                                        class="perfume-image img-fluid w-100 d-block">
                                     <div class="library-perfume-name text-dark text-uppercase text-center mt-2">
                                         <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
                                     </div>

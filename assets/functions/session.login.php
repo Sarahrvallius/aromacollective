@@ -34,8 +34,10 @@ if (isset($_POST['login'])) {
         $row = $stmt->fetch();
         //creates session variable with user id
         $_SESSION['user_id'] = $row['id'];
-        //Redirect to index.php with success message
-        header('Location: ../../index.php?action=success');
+        $_SESSION['firstname'] = $row['firstname'];
+        $_SESSION['lastname'] = $row['lastname'];
+        //Redirect to profile.php with success message
+        header('Location: ../../profile.php?action=success');
         exit();
     } else {
         //redirect to index.php with error message if user does not exist
