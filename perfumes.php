@@ -4,7 +4,7 @@ require_once 'assets/includes/display_errors.php';
 // includes database connection
 require_once 'assets/config/db.php';
 // includes functions for inserting data into database
-require_once 'assets/functions/parfume.function.php';
+require_once 'assets/functions/perfume.function.php';
 // includes header
 require_once 'assets/includes/header.php';
 ?>
