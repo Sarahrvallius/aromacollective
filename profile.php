@@ -108,7 +108,7 @@ require_once 'assets/includes/header.php';
                         <p class="mb-3"><?php echo $age_pronouns_text; ?></p>
                     <?php } ?>
                     <!-- Shows bio or placeholder text if bio is empty -->
-                    <p class="text-secondary profile-bio">
+                    <p class="text-secondary w-75">
                         <?php echo $bio_text; ?>
                     </p>
                 </div>
@@ -188,7 +188,7 @@ require_once 'assets/includes/header.php';
                     </div>
                     <!--Review title and text-->
                     <h3 class="h5 fw-bold mb-3">The perfect everyday scent!</h3>
-                    <p class="text-secondary review-text">
+                    <p class="text-secondary w-75">
                         I didn't expect to like this as much as I do, but it's quickly become one of my most reached for scents. The opening is bright without being sharp, and it settles into a warm, smooth base that lasts all day on my skin. What I enjoy most is how easy it is to wear—interesting enough to feel special, but not so heavy that it takes over a room ...
                     </p>
                 </div>
@@ -211,7 +211,7 @@ require_once 'assets/includes/header.php';
                     </div>
                     <!--Review title and text-->
                     <h3 class="h5 fw-bold mb-3">The perfect everyday scent!</h3>
-                    <p class="text-secondary review-text">
+                    <p class="text-secondary w-75">
                         I didn't expect to like this as much as I do, but it's quickly become one of my most reached for scents. The opening is bright without being sharp, and it settles into a warm, smooth base that lasts all day on my skin. What I enjoy most is how easy it is to wear—interesting enough to feel special, but not so heavy that it takes over a room ...
                     </p>
                 </div>

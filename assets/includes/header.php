@@ -37,7 +37,7 @@ $isSignupActive = $currentPage === 'add.php';
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-offwhite">
+    <nav class="navbar navbar-expand-lg bg-offwhite border-bottom">
         <div class="container py-2">
             <!-- icon -->
             <a class="navbar-brand me-2" href="index.php">
