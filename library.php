@@ -15,14 +15,16 @@ if ($search !== '') {
     $stmt = $dbh->prepare("
         SELECT *
         FROM perfumes
-        WHERE name LIKE :search
-           OR brand LIKE :search
-           OR notes LIKE :search
+        WHERE name LIKE :search_name
+           OR brand LIKE :search_brand
+           OR notes LIKE :search_notes
         ORDER BY name ASC
     ");
     // % means it can match part of a word
     $stmt->execute([
-        ':search' => '%' . $search . '%'
+        ':search_name' => '%' . $search . '%',
+        ':search_brand' => '%' . $search . '%',
+        ':search_notes' => '%' . $search . '%'
     ]);
 } else {
     // if no search - show all perfumes
