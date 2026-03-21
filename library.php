@@ -68,7 +68,7 @@ $filteredPerfumes = $stmt->fetchAll();
                     <?php if (count($filteredPerfumes) > 0): ?>
                         <!-- loop through all perfumes -->
                         <?php foreach ($filteredPerfumes as $perfume): ?>
-                            <div class="col-6 col-md-3 col-lg-2 mb-5">
+                            <div class="col-6 col-md-3 col-lg-2">
                                 <!-- link to single perfume page -->
                                 <a
                                     href="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>"
