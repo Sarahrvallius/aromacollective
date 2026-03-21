@@ -1,3 +1,4 @@
+<?php
 // show errors for debugging
 require_once 'assets/includes/display_errors.php';
 
@@ -146,24 +147,25 @@ require_once 'assets/includes/header.php';
                                             </p>
 
                                             <!-- edit & delete buttons -->
-                                            <div class="d-flex gap-2">
+                                       <?php // only the review owner can edit or delete ?>
+                                       <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
+                                         <div class="d-flex gap-2">
 
-                                                <!-- edit -->
-                                                <a
-                                                    href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
-                                                    class="btn btn-sm btn-outline-dark">
-                                                    Edit
-                                                </a>
+                                             <a
+                                              href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
+                                             class="btn btn-sm btn-outline-dark">
+                                             Edit
+                                             </a>
 
-                                                <!-- delete -->
-                                                <a
-                                                    href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
-                                                    class="btn btn-sm btn-outline-danger"
-                                                    onclick="return confirm('Are you sure you want to delete this review?');">
-                                                    Delete
-                                                </a>
+                                             <a
+                                             href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
+                                             class="btn btn-sm btn-outline-danger"
+                                             onclick="return confirm('Are you sure you want to delete this review?');">
+                                            Delete
+                                           </a>
 
-                                            </div>
+                                           </div>
+                                           <?php endif; ?>
 
                                         </div>
                                     </div>
