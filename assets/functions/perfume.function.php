@@ -42,17 +42,19 @@ if (isset($_GET['delete_review'])) {
         DELETE FROM reviews
         WHERE id = :review_id
         AND perfume_id = :perfume_id
+        AND user_id = :user_id
     ");
     $stmt->execute([
         ':review_id' => $reviewId,
-        ':perfume_id' => $perfume['id']
+        ':perfume_id' => $perfume['id'],
+        ':user_id' => $loggedInUserId
     ]);
 
     header('Location: perfumes.php?perfume=' . urlencode($perfume['slug']));
     exit;
 }
 
-// get review for editing
+// get review for editing only if it belongs to the logged in user
 if (isset($_GET['edit_review'])) {
     $editReviewId = (int) $_GET['edit_review'];
 
@@ -61,11 +63,13 @@ if (isset($_GET['edit_review'])) {
         FROM reviews
         WHERE id = :review_id
         AND perfume_id = :perfume_id
+        AND user_id = :user_id
         LIMIT 1
     ");
     $stmt->execute([
         ':review_id' => $editReviewId,
-        ':perfume_id' => $perfume['id']
+        ':perfume_id' => $perfume['id'],
+        ':user_id' => $loggedInUserId
     ]);
 
     $editReview = $stmt->fetch();
@@ -82,21 +86,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Please fill in all fields.';
     } else {
         if ($editId > 0) {
-            $stmt = $dbh->prepare("
-                UPDATE reviews
-                SET user_name = :user_name,
-                    rating = :rating,
-                    review_text = :review_text
-                WHERE id = :review_id
-                AND perfume_id = :perfume_id
-            ");
-            $stmt->execute([
-                ':user_name' => $userName,
-                ':rating' => $rating,
-                ':review_text' => $reviewText,
-                ':review_id' => $editId,
-                ':perfume_id' => $perfume['id']
-            ]);
+           // only update review if it belongs to the logged in user
+$stmt = $dbh->prepare("
+    UPDATE reviews
+    SET user_name = :user_name,
+        rating = :rating,
+        review_text = :review_text
+    WHERE id = :review_id
+    AND perfume_id = :perfume_id
+    AND user_id = :user_id
+");
+$stmt->execute([
+    ':user_name' => $userName,
+    ':rating' => $rating,
+    ':review_text' => $reviewText,
+    ':review_id' => $editId,
+    ':perfume_id' => $perfume['id'],
+    ':user_id' => $loggedInUserId
+]);
+            
         } else {
             $stmt = $dbh->prepare("
                 INSERT INTO reviews (perfume_id, user_id, user_name, rating, review_text)
