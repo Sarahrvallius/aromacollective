@@ -6,11 +6,12 @@ require_once 'assets/config/db.php';
 // includes header
 require_once 'assets/includes/header.php';
 
-
 // gets the search input from the search bar
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
+// if user typed something - filter results
 if ($search !== '') {
+    // search in database (name brand notes)
     $stmt = $dbh->prepare("
         SELECT *
         FROM perfumes
@@ -19,10 +20,12 @@ if ($search !== '') {
            OR notes LIKE :search
         ORDER BY name ASC
     ");
+    // % means it can match part of a word
     $stmt->execute([
         ':search' => '%' . $search . '%'
     ]);
 } else {
+    // if no search - show all perfumes
     $stmt = $dbh->query("
         SELECT *
         FROM perfumes
@@ -30,12 +33,11 @@ if ($search !== '') {
     ");
 }
 
+// get the results from database
 $filteredPerfumes = $stmt->fetchAll();
-
-
 ?>
 
-<!--LIBRARY PAGE-->
+<!-- title + search bar -->
 <main class="bg-offwhite">
     <section class="pt-5">
         <div class="container">
@@ -45,6 +47,7 @@ $filteredPerfumes = $stmt->fetchAll();
                 </div>
 
                 <div class="col-12 col-lg-4">
+                    <!-- search form (GET method) -->
                     <form class="d-flex gap-2 mt-3" method="GET" action="library.php">
                         <input
                             class="form-control"
@@ -58,13 +61,15 @@ $filteredPerfumes = $stmt->fetchAll();
             </div>
         </div>
 
+        <!-- section where perfumes are shown -->
         <div class="bg-gray py-5">
             <div class="container">
                 <div class="row g-4">
-
                     <?php if (count($filteredPerfumes) > 0): ?>
+                        <!-- loop through all perfumes -->
                         <?php foreach ($filteredPerfumes as $perfume): ?>
                             <div class="col-6 col-md-3 col-lg-2 mb-5">
+                                <!-- link to single perfume page -->
                                 <a
                                     href="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>"
                                     class="perfume-card d-block text-decoration-none">
@@ -72,18 +77,19 @@ $filteredPerfumes = $stmt->fetchAll();
                                         src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
                                         alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
                                         class="perfume-image img-fluid w-100 d-block">
+                                    <!-- show perfume name -->
                                     <div class="library-perfume-name text-dark text-uppercase text-center mt-2">
                                         <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
                                     </div>
                                 </a>
                             </div>
                         <?php endforeach; ?>
+                        <!-- if nothing matches search -->
                     <?php else: ?>
                         <div class="col-12">
                             <p class="text-center m-0">No fragrances found.</p>
                         </div>
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>

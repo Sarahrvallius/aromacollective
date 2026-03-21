@@ -13,6 +13,7 @@ require_once 'assets/functions/session.login.php';
 
 // to determine which nav link is active
 $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
+$isHomeActive = $currentPage === 'index.php';
 $isAboutActive = $currentPage === 'about.php';
 $isPerfumesActive = in_array($currentPage, ['library.php', 'perfumes.php'], true);
 $isProfileActive = $currentPage === 'profile.php';
@@ -48,6 +49,7 @@ $isSignupActive = $currentPage === 'add.php';
 
             <!-- nav links with active state bold -->
             <div class="ms-auto d-flex align-items-center gap-3">
+                <a class="text-decoration-none me-1 <?php echo $isHomeActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="index.php">Home</a>
                 <a class="text-decoration-none me-1 <?php echo $isAboutActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="about.php">About us</a>
                 <a class="text-decoration-none me-5 <?php echo $isPerfumesActive ? 'text-red fw-semibold' : 'text-dark'; ?>" href="library.php">Perfumes</a>
 

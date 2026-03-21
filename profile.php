@@ -238,7 +238,7 @@ require_once 'assets/includes/header.php';
                 </div>
             </div>
             <div class="col-6 h-100 p-0">
-                <img src="assets/images/notes-sea.webp" alt="Ocean waves" class="w-100 h-100 img-cover">
+                <img src="assets/images/notes-sea.webp" alt="Ocean waves" class="w-100 h-100 object-fit-cover">
             </div>
         </div>
     </section>
