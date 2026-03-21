@@ -118,8 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // get reviews for selected perfume
 $stmt = $dbh->prepare("
-    SELECT *
+    SELECT reviews.*, profiles.profile_image AS reviewer_profile_image
     FROM reviews
+    LEFT JOIN profiles ON profiles.user_id = reviews.user_id
     WHERE perfume_id = :perfume_id
     ORDER BY created_at DESC, id DESC
 ");
@@ -146,9 +147,9 @@ function renderStars($rating)
 
     for ($i = 1; $i <= 5; $i++) {
         if ($i <= $rating) {
-            $output .= '<span class="perfumes-star perfumes-star-filled">★</span>';
+            $output .= '<span class="fs-4 text-beige">★</span>';
         } else {
-            $output .= '<span class="perfumes-star">★</span>';
+            $output .= '<span class="fs-4 text-secondary">★</span>';
         }
     }
 
@@ -156,6 +157,3 @@ function renderStars($rating)
 }
 // includes header
 require_once 'assets/includes/header.php';
-
-
-?>

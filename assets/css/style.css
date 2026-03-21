@@ -176,52 +176,13 @@ button {
 
 /* PERFUMES */
 
-.perfumes-brand {
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.perfumes-title {
-    font-size: 3rem;
-}
-
-.perfumes-subtitle {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.perfumes-category-badge {
-    background-color: #c49a6c;
-    color: #ffffff;
-    border-radius: 999px;
-    font-size: 0.85rem;
-}
-
+/* Perfume image - Fixed width */
 .perfumes-hero-image {
     max-width: 380px;
-    border-radius: 20px;
 }
 
-.perfumes-info-box,
-.perfumes-review-card,
-.perfumes-review-form-box {
-    background-color: #f3f1ee;
-    border-radius: 24px;
-}
-
-.perfumes-profile-circle {
+/* Review profile image - Fixed size */
+.review-profile-image {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background-color: #d8d5d2;
-}
-
-.perfumes-star {
-    font-size: 1.4rem;
-    color: #b8b8b8;
-}
-
-.perfumes-star-filled {
-    color: #c49a6c;
 }

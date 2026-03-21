@@ -12,20 +12,20 @@ require_once 'assets/includes/header.php';
 <!-- PERFUME DETAIL PAGE -->
 <main class="bg-offwhite">
     <section class="py-5">
-        <div class="container perfumes-page-container">
+        <div class="container">
             <div class="mb-4">
                 <a href="library.php" class="text-decoration-none text-dark">← Back to library</a>
             </div>
 
             <div class="text-center mb-4">
-                <div class="perfumes-brand mb-2"><?php echo htmlspecialchars($perfume['brand'], ENT_QUOTES, 'UTF-8'); ?></div>
-                <h1 class="perfumes-title mb-2"><?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?></h1>
-                <p class="perfumes-subtitle text-muted mb-3">
+                <div class="text-uppercase mb-2"><?php echo htmlspecialchars($perfume['brand'], ENT_QUOTES, 'UTF-8'); ?></div>
+                <h1 class="fs-1 mb-2"><?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                <p class="w-50 mx-auto mb-3">
                     <?php echo htmlspecialchars($perfume['subtitle'], ENT_QUOTES, 'UTF-8'); ?>
                 </p>
 
                 <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
-                    <span class="perfumes-category-badge px-3 py-1">
+                    <span class="rounded-pill px-3 py-1 text-white small bg-beige px-3 py-1">
                         <?php echo htmlspecialchars($perfume['category'], ENT_QUOTES, 'UTF-8'); ?>
                     </span>
                     <span><?php echo $reviewCount; ?> reviews</span>
@@ -36,7 +36,7 @@ require_once 'assets/includes/header.php';
                 <img
                     src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
                     alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
-                    class="perfumes-hero-image img-fluid">
+                    class="perfumes-hero-image rounded-4 img-fluid">
             </div>
 
             <div class="text-center mb-5">
@@ -46,7 +46,7 @@ require_once 'assets/includes/header.php';
 
             <div class="row justify-content-center mb-5">
                 <div class="col-12 col-lg-8">
-                    <div class="perfumes-info-box p-4 p-md-5">
+                    <div class="border rounded-4 bg-white p-4 p-md-5">
                         <p class="mb-4">
                             <?php echo htmlspecialchars($perfume['description'], ENT_QUOTES, 'UTF-8'); ?>
                         </p>
@@ -68,13 +68,19 @@ require_once 'assets/includes/header.php';
             <section class="mb-5">
                 <h2 class="text-center mb-4">See what people have to say about this fragrance</h2>
 
-                <div class="row justify-content-center g-4">
+                <div class="row justify-content-center g-2">
                     <?php if (count($reviews) > 0): ?>
                         <?php foreach ($reviews as $review): ?>
+                            <?php
+                            $reviewProfileImage = $review['reviewer_profile_image'];
+                            if ($reviewProfileImage == '' || $reviewProfileImage == 'none') {
+                                $reviewProfileImage = 'profiles/placeholder-img.svg';
+                            }
+                            ?>
                             <div class="col-12 col-lg-8">
-                                <div class="perfumes-review-card p-4">
+                                <div class="border rounded-4 bg-white p-4">
                                     <div class="d-flex gap-3 align-items-start">
-                                        <div class="perfumes-profile-circle"></div>
+                                        <?php echo '<img src="assets/images/' . $reviewProfileImage . '" alt="Profile image" class="rounded-circle object-fit-cover flex-shrink-0 review-profile-image">'; ?>
                                         <div class="w-100">
                                             <div class="fw-semibold mb-1">
                                                 <?php echo htmlspecialchars($review['user_name'], ENT_QUOTES, 'UTF-8'); ?>
@@ -105,7 +111,7 @@ require_once 'assets/includes/header.php';
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="col-12 col-lg-8">
-                            <div class="perfumes-review-card p-4 text-center">
+                            <div class="p-4 text-center">
                                 <p class="mb-0">No reviews yet. Be the first to write one.</p>
                             </div>
                         </div>
@@ -120,7 +126,7 @@ require_once 'assets/includes/header.php';
             ?>
                 <section class="row justify-content-center" id="write-review">
                     <div class="col-12 col-lg-8">
-                        <div class="perfumes-review-form-box p-4 p-md-5">
+                        <div class="border rounded-4 bg-white p-4 p-md-5">
                             <h2 class="h4 mb-4 text-center">
                                 <?php echo $editReview ? 'Edit your review' : 'Share your thoughts about this fragrance'; ?>
                             </h2>
