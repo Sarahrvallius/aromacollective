@@ -1,11 +1,13 @@
-<?php
 // show errors for debugging
 require_once 'assets/includes/display_errors.php';
-// includes database connection
+
+// includes database connection 
 require_once 'assets/config/db.php';
-// includes functions for inserting data into database
+
+// includes all logic for perfumes (reviews and rating etc)
 require_once 'assets/functions/perfume.function.php';
-// includes header
+
+// includes header (navigation etc)
 require_once 'assets/includes/header.php';
 ?>
 
@@ -13,17 +15,30 @@ require_once 'assets/includes/header.php';
 <main class="bg-offwhite">
     <section class="py-5">
         <div class="container">
+
+            <!-- link to go back to library page -->
             <div class="mb-4">
                 <a href="library.php" class="text-decoration-none text-dark">← Back to library</a>
             </div>
 
+            <!-- main perfume info -->
             <div class="text-center mb-4">
-                <div class="text-uppercase mb-2"><?php echo htmlspecialchars($perfume['brand'], ENT_QUOTES, 'UTF-8'); ?></div>
-                <h1 class="fs-1 mb-2"><?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                <!-- brand -->
+                <div class="text-uppercase mb-2">
+                    <?php echo htmlspecialchars($perfume['brand'], ENT_QUOTES, 'UTF-8'); ?>
+                </div>
+
+                <!-- name -->
+                <h1 class="fs-1 mb-2">
+                    <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
+                </h1>
+
+                <!-- short description -->
                 <p class="w-50 mx-auto mb-3">
                     <?php echo htmlspecialchars($perfume['subtitle'], ENT_QUOTES, 'UTF-8'); ?>
                 </p>
 
+                <!-- category + number of reviews -->
                 <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
                     <span class="rounded-pill px-3 py-1 text-white small bg-beige px-3 py-1">
                         <?php echo htmlspecialchars($perfume['category'], ENT_QUOTES, 'UTF-8'); ?>
@@ -32,6 +47,7 @@ require_once 'assets/includes/header.php';
                 </div>
             </div>
 
+            <!-- perfume image -->
             <div class="text-center mb-4">
                 <img
                     src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
@@ -39,110 +55,167 @@ require_once 'assets/includes/header.php';
                     class="perfumes-hero-image rounded-4 img-fluid">
             </div>
 
+            <!-- average rating -->
             <div class="text-center mb-5">
-                <div class="mb-2"><?php echo renderStars(round($averageRating)); ?></div>
+                <div class="mb-2">
+                    <?php echo renderStars(round($averageRating)); ?>
+                </div>
                 <div><?php echo $averageRating; ?> / 5 stars</div>
             </div>
 
+            <!-- description + notes -->
             <div class="row justify-content-center mb-5">
                 <div class="col-12 col-lg-8">
                     <div class="border rounded-4 bg-white p-4 p-md-5">
+
+                        <!-- description text -->
                         <p class="mb-4">
                             <?php echo htmlspecialchars($perfume['description'], ENT_QUOTES, 'UTF-8'); ?>
                         </p>
 
+                        <!-- perfume notes -->
                         <div>
                             <h2 class="h4 mb-3">Notes</h2>
-                            <p class="mb-2"><strong>Top notes:</strong> <?php echo htmlspecialchars($perfume['top_notes'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p class="mb-2"><strong>Heart notes:</strong> <?php echo htmlspecialchars($perfume['heart_notes'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p class="mb-0"><strong>Base notes:</strong> <?php echo htmlspecialchars($perfume['base_notes'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="mb-2">
+                                <strong>Top notes:</strong>
+                                <?php echo htmlspecialchars($perfume['top_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                            <p class="mb-2">
+                                <strong>Heart notes:</strong>
+                                <?php echo htmlspecialchars($perfume['heart_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                            <p class="mb-0">
+                                <strong>Base notes:</strong>
+                                <?php echo htmlspecialchars($perfume['base_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
                         </div>
+
                     </div>
                 </div>
             </div>
 
+            <!-- scroll down to review form -->
             <div class="text-center mb-5">
-                <a href="#write-review" class="btn btn-outline-dark px-4 py-2">Write a review</a>
+                <a href="#write-review" class="btn btn-outline-dark px-4 py-2">
+                    Write a review
+                </a>
             </div>
 
+            <!-- reviews section -->
             <section class="mb-5">
-                <h2 class="text-center mb-4">See what people have to say about this fragrance</h2>
+                <h2 class="text-center mb-4">
+                    See what people have to say about this fragrance
+                </h2>
 
                 <div class="row justify-content-center g-2">
+
                     <?php if (count($reviews) > 0): ?>
+                        <!-- loop through all reviews -->
                         <?php foreach ($reviews as $review): ?>
+
                             <?php
+                            // if no profile image, use placeholder instead
                             $reviewProfileImage = $review['reviewer_profile_image'];
                             if ($reviewProfileImage == '' || $reviewProfileImage == 'none') {
                                 $reviewProfileImage = 'profiles/placeholder-img.svg';
                             }
                             ?>
+
                             <div class="col-12 col-lg-8">
                                 <div class="border rounded-4 bg-white p-4">
                                     <div class="d-flex gap-3 align-items-start">
+
+                                        <!-- profile image -->
                                         <?php echo '<img src="assets/images/' . $reviewProfileImage . '" alt="Profile image" class="rounded-circle object-fit-cover flex-shrink-0 review-profile-image">'; ?>
+
                                         <div class="w-100">
+
+                                            <!-- user name -->
                                             <div class="fw-semibold mb-1">
                                                 <?php echo htmlspecialchars($review['user_name'], ENT_QUOTES, 'UTF-8'); ?>
                                             </div>
-                                            <div class="mb-2"><?php echo renderStars($review['rating']); ?></div>
+
+                                            <!-- rating -->
+                                            <div class="mb-2">
+                                                <?php echo renderStars($review['rating']); ?>
+                                            </div>
+
+                                            <!-- review text -->
                                             <p class="mb-3">
                                                 <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
                                             </p>
 
+                                            <!-- edit & delete buttons -->
                                             <div class="d-flex gap-2">
+
+                                                <!-- edit -->
                                                 <a
                                                     href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
                                                     class="btn btn-sm btn-outline-dark">
                                                     Edit
                                                 </a>
 
+                                                <!-- delete -->
                                                 <a
                                                     href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
                                                     class="btn btn-sm btn-outline-danger"
                                                     onclick="return confirm('Are you sure you want to delete this review?');">
                                                     Delete
                                                 </a>
+
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         <?php endforeach; ?>
+
                     <?php else: ?>
+                        <!-- if no reviews exist -->
                         <div class="col-12 col-lg-8">
                             <div class="p-4 text-center">
-                                <p class="mb-0">No reviews yet. Be the first to write one.</p>
+                                <p class="mb-0">
+                                    No reviews yet. Be the first to write one.
+                                </p>
                             </div>
                         </div>
                     <?php endif; ?>
+
                 </div>
             </section>
 
             <!-- review form -->
             <?php
-            // check if user is logged in, if so show review form
+            // check if user is logged in
             if (isset($_SESSION['user_id'])):
             ?>
+
+                <!-- show form if logged in -->
                 <section class="row justify-content-center" id="write-review">
                     <div class="col-12 col-lg-8">
                         <div class="border rounded-4 bg-white p-4 p-md-5">
+
+                            <!-- title changes if editing -->
                             <h2 class="h4 mb-4 text-center">
                                 <?php echo $editReview ? 'Edit your review' : 'Share your thoughts about this fragrance'; ?>
                             </h2>
 
+                            <!-- show error if something is missing -->
                             <?php if ($error !== ''): ?>
                                 <div class="alert alert-danger mb-3">
                                     <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
                                 </div>
                             <?php endif; ?>
 
-
-
+                            <!-- form -->
                             <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>#write-review">
+
+                                <!-- hidden id if editing -->
                                 <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
 
-                                <!-- Namebox-->
+                                <!-- name -->
                                 <div class="mb-3">
                                     <label class="form-label">Your name</label>
                                     <input
@@ -151,15 +224,14 @@ require_once 'assets/includes/header.php';
                                         class="form-control"
                                         placeholder="Enter your name"
                                         value="<?php
-                                                // checks if firstname and lastname session variables are set, if so it will show them in the input field, otherwise it will be empty
                                                 if (isset($_SESSION['firstname'], $_SESSION['lastname'])) {
                                                     echo htmlspecialchars($_SESSION['firstname'] . ' ' . $_SESSION['lastname']);
                                                 }
                                                 ?>">
                                 </div>
 
-                                <!-- Rating, in stars-->
-                                <div class=" mb-3">
+                                <!-- rating -->
+                                <div class="mb-3">
                                     <label class="form-label">Your rating</label>
                                     <select name="rating" class="form-select">
                                         <option value="">Choose rating</option>
@@ -171,7 +243,7 @@ require_once 'assets/includes/header.php';
                                     </select>
                                 </div>
 
-                                <!-- Your review - in text -->
+                                <!-- review text -->
                                 <div class="mb-4">
                                     <label class="form-label">Your review</label>
                                     <textarea
@@ -181,13 +253,15 @@ require_once 'assets/includes/header.php';
                                         placeholder="Write your thoughts about this fragrance..."><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                                 </div>
 
+                                <!-- buttons -->
                                 <div class="text-center d-flex justify-content-center gap-2 flex-wrap">
 
-                                    <!-- Submit button -->
+                                    <!-- submit -->
                                     <button type="submit" class="btn btn-dark px-4 py-2">
                                         <?php echo $editReview ? 'Update review' : 'Post review'; ?>
                                     </button>
 
+                                    <!-- cancel if editing -->
                                     <?php if ($editReview): ?>
                                         <a
                                             href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>#write-review"
@@ -195,6 +269,7 @@ require_once 'assets/includes/header.php';
                                             Cancel
                                         </a>
                                     <?php endif; ?>
+
                                 </div>
 
                             </form>
@@ -202,25 +277,26 @@ require_once 'assets/includes/header.php';
                     </div>
                 </section>
 
-                <!-- If not logged in this information will be shown -->
-            <?php else: // if not logged in, this will show 
-            ?>
+            <?php else: ?>
 
+                <!-- show this if not logged in -->
                 <section class="row justify-content-center">
                     <div class="col-12 col-lg-8 text-center p-5 border bg-light">
                         <h2 class="h5 mb-3">Want to share your thoughts?</h2>
-                        <p class="mb-4 text-muted">You need to be logged in to write a review.</p>
-                        <a href="signin.php" class="btn btn-outline-dark px-4">Sign In to Review</a>
+                        <p class="mb-4 text-muted">
+                            You need to be logged in to write a review.
+                        </p>
+                        <a href="signin.php" class="btn btn-outline-dark px-4">
+                            Sign In to Review
+                        </a>
                     </div>
                 </section>
 
-            <?php endif; //end the check
-            ?>
+            <?php endif; ?>
 
         </div>
     </section>
 </main>
-
 
 <?php
 // includes footer
