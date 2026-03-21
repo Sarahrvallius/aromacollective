@@ -9,7 +9,7 @@ require_once 'assets/includes/header.php'; //includes header
         <div class="container-fluid">
             <div class="row align-items-center g-3">
                 <div class="col-12 col-md-6 align-self-end pb-0">
-                    <img src="assets/images/aboutus-header.webp" alt="Woman posing with face covered in lace and butterflies" class="img-size mb-0 d-block ms-auto">
+                    <img src="assets/images/aboutus-header.webp" alt="Woman posing with face covered in lace and butterflies" class="w-75 mb-0 d-block ms-auto">
                 </div>
                 <div class="col-12 col-md-6 px-5 d-flex align-items-center">
                     <div class="w-100 ps-3 pe-4 mt-5 pt-5">

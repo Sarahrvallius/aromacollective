@@ -16,7 +16,7 @@ body {
     width: 35%;
 }
 
-/* Styling for headers dropdown */
+/* Styling for dropdown in header */
 .profile-hover-dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -27,7 +27,7 @@ body {
     color: #fff;
 }
 
-/* Perfume cards transition effect and dimensions - Library and Profile*/
+/* Perfume cards transition effect and dimensions */
 .perfume-card {
     transition: transform 0.2s ease;
 }
@@ -117,14 +117,9 @@ button {
     height: 100%;
 }
 
-/* Community section -Fixed height for carousel */
+/* Community section - Fixed height for carousel */
 .community-carousel-inner {
     min-height: 320px;
-}
-
-.community-image-placeholder {
-    min-height: 620px;
-    background-color: #1b1b1b;
 }
 
 
@@ -136,11 +131,6 @@ button {
 .profile-img {
     width: 250px;
     height: 250px;
-    object-fit: cover;
-}
-
-/*Top notes - Image cover fit*/
-.img-cover {
     object-fit: cover;
 }
 
@@ -159,12 +149,6 @@ button {
     overflow: hidden;
 }
 
-/*Fixed size for hero image*/
-.img-size {
-    width: 75%;
-    height: auto;
-}
-
 /* ======================================
     LIBRARY.PHP
 ====================================== */
@@ -174,7 +158,9 @@ button {
     letter-spacing: 1px;
 }
 
-/* PERFUMES */
+/* ======================================
+    PERFUMES.PHP
+====================================== */
 
 /* Perfume image - Fixed width */
 .perfumes-hero-image {
