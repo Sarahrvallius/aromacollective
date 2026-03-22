@@ -81,43 +81,55 @@ if (isset($_GET['edit_review'])) {
 
 // save new review or update existing review
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userName = trim($_POST['user_name'] ?? '');
+    $reviewTitle = trim($_POST['review_title'] ?? '');
     $rating = (int)($_POST['rating'] ?? 0);
     $reviewText = trim($_POST['review_text'] ?? '');
     $editId = isset($_POST['edit_id']) ? (int) $_POST['edit_id'] : 0;
 
-    if ($userName === '' || $rating < 1 || $rating > 5 || $reviewText === '') {
+    // Hämta display_name från profilen
+    $displayName = '';
+    if ($loggedInUserId) {
+        $stmtProfile = $dbh->prepare('SELECT display_name FROM profiles WHERE user_id = :user_id LIMIT 1');
+        $stmtProfile->bindValue(':user_id', $loggedInUserId, PDO::PARAM_INT);
+        $stmtProfile->execute();
+        $profileRow = $stmtProfile->fetch();
+        $displayName = $profileRow['display_name'] ?? '';
+    }
+
+    if ($reviewTitle === '' || $rating < 1 || $rating > 5 || $reviewText === '') {
         $error = 'Please fill in all fields.';
     } else {
         if ($editId > 0) {
-           // only update review if it belongs to the logged in user
-$stmt = $dbh->prepare("
-    UPDATE reviews
-    SET user_name = :user_name,
-        rating = :rating,
-        review_text = :review_text
-    WHERE id = :review_id
-    AND perfume_id = :perfume_id
-    AND user_id = :user_id
-");
-$stmt->execute([
-    ':user_name' => $userName,
-    ':rating' => $rating,
-    ':review_text' => $reviewText,
-    ':review_id' => $editId,
-    ':perfume_id' => $perfume['id'],
-    ':user_id' => $loggedInUserId
-]);
-            
+            // only update review if it belongs to the logged in user
+            $stmt = $dbh->prepare("
+                UPDATE reviews
+                SET review_title = :review_title,
+                    display_name = :display_name,
+                    rating = :rating,
+                    review_text = :review_text
+                WHERE id = :review_id
+                AND perfume_id = :perfume_id
+                AND user_id = :user_id
+            ");
+            $stmt->execute([
+                ':review_title' => $reviewTitle,
+                ':display_name' => $displayName,
+                ':rating' => $rating,
+                ':review_text' => $reviewText,
+                ':review_id' => $editId,
+                ':perfume_id' => $perfume['id'],
+                ':user_id' => $loggedInUserId
+            ]);
         } else {
             $stmt = $dbh->prepare("
-                INSERT INTO reviews (perfume_id, user_id, user_name, rating, review_text)
-                VALUES (:perfume_id, :user_id, :user_name, :rating, :review_text)
+                INSERT INTO reviews (perfume_id, user_id, review_title, display_name, rating, review_text)
+                VALUES (:perfume_id, :user_id, :review_title, :display_name, :rating, :review_text)
             ");
             $stmt->execute([
                 ':perfume_id' => $perfume['id'],
                 ':user_id' => $loggedInUserId,
-                ':user_name' => $userName,
+                ':review_title' => $reviewTitle,
+                ':display_name' => $displayName,
                 ':rating' => $rating,
                 ':review_text' => $reviewText
             ]);
@@ -129,6 +141,7 @@ $stmt->execute([
 }
 
 // get reviews for selected perfume
+
 $stmt = $dbh->prepare("
     SELECT reviews.*, profiles.profile_image AS reviewer_profile_image
     FROM reviews

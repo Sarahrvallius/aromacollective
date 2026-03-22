@@ -133,13 +133,15 @@ if (!isset($_SESSION['user_id'])) {
                     echo '<div class="row mb-5 align-items-start">
                             <div class="col-3">
                                 <a href="perfumes.php?perfume=' . $review['slug'] . '">
-                                    <img src="' . $review['image'] . '" alt="' . $review['name'] . '" class="perfume-image img-fluid w-100 d-block">
+                                    <img src="' . $review['image'] . '" alt="' . $review['name'] . '" class="perfume-image perfume-card img-fluid w-100 d-block">
                                 </a>
-                            </div>
-                            <div class="col-8 ps-4">
-                                <div class="mb-2">' . $stars . '</div>
-                                <h3 class="h5 fw-bold mb-3">' . $review['name'] . '</h3>
-                                <p class="text-secondary w-75">' . $review_text;
+                          </div>
+                          <div class="col-8 ps-4">
+                              <h3 class="h5 fw-bold mt-3">' . $review['name'] . '</h3>
+                              <div class="mb-2 mt-3">' . $stars . '</div>
+                              
+                              <p class="fw-bold">' . $review['review_title'] . '</p>
+                              <p class="text-secondary w-75">' . $review_text;
                     // If review text was shortened, add link to full review
                     if ($is_long) {
                         echo ' <a href="perfumes.php?perfume=' . $review['slug'] . '#review-' . $review['review_id'] . '" class="text-decoration-none text-dark">Read full review</a>';

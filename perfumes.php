@@ -131,22 +131,29 @@ require_once 'assets/includes/header.php';
 
                                         <div class="w-100">
 
-                                            <!-- user name -->
-                                            <div class="fw-semibold mb-1">
-                                                <?php echo htmlspecialchars($review['user_name'], ENT_QUOTES, 'UTF-8'); ?>
+                                        <!-- display_name from profile -->
+                                        <div class="fw-semibold mb-1">
+                                            <?php echo htmlspecialchars($review['display_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
+                                        </div>
+
+                                        <!-- rating -->
+                                        <div class="mb-2">
+                                            <?php echo renderStars($review['rating']); ?>
+                                        </div>
+
+                                        <!-- review title under stjärnorna -->
+                                        <?php if (!empty($review['review_title'])): ?>
+                                            <div class="fw-bold mb-2">
+                                                <?php echo htmlspecialchars($review['review_title'], ENT_QUOTES, 'UTF-8'); ?>
                                             </div>
+                                        <?php endif; ?>
 
-                                            <!-- rating -->
-                                            <div class="mb-2">
-                                                <?php echo renderStars($review['rating']); ?>
-                                            </div>
+                                        <!-- review text -->
+                                        <p class="mb-3">
+                                            <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
+                                        </p>
 
-                                            <!-- review text -->
-                                            <p class="mb-3">
-                                                <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
-                                            </p>
-
-                                            <!-- edit & delete buttons -->
+                                        <!-- edit & delete buttons -->
                                        <?php // only the review owner can edit or delete ?>
                                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
                                          <div class="d-flex gap-2">
@@ -217,19 +224,15 @@ require_once 'assets/includes/header.php';
                                 <!-- hidden id if editing -->
                                 <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
 
-                                <!-- name -->
+                                <!-- review title -->
                                 <div class="mb-3">
-                                    <label class="form-label">Your name</label>
+                                    <label class="form-label">Review title</label>
                                     <input
                                         type="text"
-                                        name="user_name"
+                                        name="review_title"
                                         class="form-control"
-                                        placeholder="Enter your name"
-                                        value="<?php
-                                                if (isset($_SESSION['firstname'], $_SESSION['lastname'])) {
-                                                    echo htmlspecialchars($_SESSION['firstname'] . ' ' . $_SESSION['lastname']);
-                                                }
-                                                ?>">
+                                        placeholder="E.g. Best summer scent!"
+                                        value="<?php echo htmlspecialchars($editReview['review_title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                                 </div>
 
                                 <!-- rating -->
