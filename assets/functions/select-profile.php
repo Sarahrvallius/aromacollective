@@ -31,7 +31,7 @@ $stmt->execute();
 $favorites = $stmt->fetchAll();
 
 // Fetch 2 latest reviews by logged-in user
-$sql = 'SELECT p.slug, p.name, p.image, r.id AS review_id, r.rating, r.review_text
+$sql = 'SELECT p.slug, p.name, p.image, r.id AS review_id, r.rating, r.review_title, r.review_text
     FROM reviews r
     JOIN perfumes p ON p.id = r.perfume_id
     WHERE r.user_id = :user_id

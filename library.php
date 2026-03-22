@@ -66,7 +66,7 @@ $filteredPerfumes = $stmt->fetchAll();
         <!-- section where perfumes are shown -->
         <div class="bg-gray py-5">
             <div class="container">
-                <div class="row g-4">
+                <div class="row g-3">
                     <?php if (count($filteredPerfumes) > 0): ?>
                         <!-- loop through all perfumes -->
                         <?php foreach ($filteredPerfumes as $perfume): ?>
