@@ -231,7 +231,7 @@ require_once 'assets/includes/header.php';
                                         type="text"
                                         name="review_title"
                                         class="form-control"
-                                        placeholder="E.g. Best summer scent!"
+                                        placeholder="Title your review"
                                         value="<?php echo htmlspecialchars($editReview['review_title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                                 </div>
 
