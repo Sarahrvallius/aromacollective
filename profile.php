@@ -3,6 +3,10 @@
 require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
+// includes header
+require_once 'assets/includes/header.php';
+// SELECT (fetch) all profile data
+require_once 'assets/functions/select-profile.php';
 
 // Check if user is logged in, if not redirect to signin page
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -12,64 +16,9 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: signin.php');
     exit;
 }
-
-// Get the logged-in user's ID from the session
-$user_id = $_SESSION['user_id'];
-
-// Fetch the user's profile information from profiles table
-$sql = 'SELECT display_name, age, pronouns, bio, profile_image FROM profiles WHERE user_id = :user_id LIMIT 1';
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-$stmt->execute();
-$profile = $stmt->fetch();
-
-// Fetch user's name from users table
-$sql = 'SELECT firstname, lastname FROM users WHERE id = :user_id LIMIT 1';
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-$stmt->execute();
-$user = $stmt->fetch();
-$firstname = $user['firstname'] ?? '';
-$lastname = $user['lastname'] ?? '';
-
-// Fetch top 6 favorites (highest rated perfumes by logged-in user)
-$sql = 'SELECT p.slug, p.name, p.image, r.rating
-        FROM reviews r
-        JOIN perfumes p ON p.id = r.perfume_id
-        WHERE r.user_id = :user_id
-        ORDER BY r.rating DESC, r.created_at DESC
-        LIMIT 6';
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-$stmt->execute();
-$favorites = $stmt->fetchAll();
-
-// Count total ratings and reviews from user to display in profile section
-$sql = 'SELECT COUNT(*) as count FROM reviews WHERE user_id = :user_id';
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-$stmt->execute();
-$result = $stmt->fetch();
-$rating_count = $result['count'];
-$review_count = $result['count'];
-
-// Save profile values in variables
-$display_name = $profile['display_name'] ?? '';
-$age = !empty($profile['age']) ? $profile['age'] : '';
-$pronouns = $profile['pronouns'] ?? 'None';
-$bio = $profile['bio'] ?? '';
-$profile_image = $profile['profile_image'] ?? '';
-// If profile image is empty or deleted, use placeholder
-if ($profile_image === '' || $profile_image === 'none' || !file_exists(__DIR__ . '/assets/images/' . $profile_image)) {
-    $profile_image = 'profiles/placeholder-img.svg';
-}
-
-// includes header
-require_once 'assets/includes/header.php';
 ?>
 
 <main>
-
     <!--Profile section-->
     <section class="bg-offwhite py-5">
         <div class="container">
@@ -85,15 +34,6 @@ require_once 'assets/includes/header.php';
 
                 <!-- Profile name, info, bio -->
                 <div class="col-7 ps-5">
-                    <?php
-                    // Prepare display info
-                    $full_name = $display_name !== '' ? $display_name : $firstname . ' ' . $lastname;
-                    $bio_text = $bio !== '' ? $bio : 'Tell us about yourself!';
-                    $age_pronouns_text = '';
-                    if ($age !== '' || $pronouns !== 'None') {
-                        $age_pronouns_text = ($age !== '' ? $age . ' years' : '') . ($pronouns !== 'None' ? ($age !== '' ? '. ' : '') . $pronouns : '') . '.';
-                    }
-                    ?>
                     <div class="d-flex gap-5 align-items-start mb-2">
                         <!-- Shows display name as firstname + lastname from users table if display name is empty -->
                         <h1 class="display-5 mb-0"><?php echo $full_name; ?></h1>
@@ -107,7 +47,7 @@ require_once 'assets/includes/header.php';
                     <?php if ($age_pronouns_text !== '') { ?>
                         <p class="mb-3"><?php echo $age_pronouns_text; ?></p>
                     <?php } ?>
-                    <!-- Shows bio or placeholder text if bio is empty -->
+                    <!-- Shows bio, or placeholder text if bio is empty -->
                     <p class="text-secondary w-75">
                         <?php echo $bio_text; ?>
                     </p>
@@ -124,7 +64,7 @@ require_once 'assets/includes/header.php';
             <div class="border-top border-1 border-dark w-50 mb-4"></div>
 
             <!-- Perfume cards -->
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-4">
+            <div class="row row-cols-6 g-3">
                 <?php
                 // Checks whether user has any favorites
                 if (count($favorites) > 0) {
@@ -170,54 +110,51 @@ require_once 'assets/includes/header.php';
             <!-- Title with underline -->
             <h2 class="fs-4 ms-4 mb-2">Recent Reviews</h2>
             <div class="border-top border-1 border-dark w-50 mb-4"></div>
+            <?php
+            // If user has reviews, display the two most recent
+            if (count($recent_reviews) > 0) {
+                foreach ($recent_reviews as $review) {
+                    $stars = '';
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= (int) $review['rating']) {
+                            $stars .= '<i class="fa-solid fa-star mt-3 mb-2"></i>';
+                        } else {
+                            $stars .= '<i class="fa-regular fa-star mt-3 mb-2"></i>';
+                        }
+                    }
+                    // Shorten review text to 600 characters and add "..." + link if longer
+                    $review_text = $review['review_text'];
+                    $max_length = 600;
+                    $is_long = strlen($review_text) > $max_length;
+                    if ($is_long) {
+                        $review_text = substr($review_text, 0, $max_length) . '...';
+                    }
+                    // Display review with perfume image, name, star rating, and review text
+                    echo '<div class="row mb-5 align-items-start">
+                            <div class="col-3">
+                                <a href="perfumes.php?perfume=' . $review['slug'] . '">
+                                    <img src="' . $review['image'] . '" alt="' . $review['name'] . '" class="perfume-image img-fluid w-100 d-block">
+                                </a>
+                            </div>
+                            <div class="col-8 ps-4">
+                                <div class="mb-2">' . $stars . '</div>
+                                <h3 class="h5 fw-bold mb-3">' . $review['name'] . '</h3>
+                                <p class="text-secondary w-75">' . $review_text;
+                    // If review text was shortened, add link to full review
+                    if ($is_long) {
+                        echo ' <a href="perfumes.php?perfume=' . $review['slug'] . '#review-' . $review['review_id'] . '" class="text-decoration-none text-dark">Read full review</a>';
+                    }
+                    echo '</p>';
+                    echo '       </div>
+                                        </div>';
+                }
+                // If user doesn't have any reviews, display message
+            } else {
+                echo '<p class="text-center mb-0">No reviews yet.</p>';
+            }
+            ?>
 
-            <!-- Review 1 -->
-            <div class="row mb-5 align-items-start">
-                <!--Image-->
-                <div class="col-3">
-                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded shadow-sm">
-                </div>
-                <!--Rating-->
-                <div class="col-8 ps-4">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <!--Review title and text-->
-                    <h3 class="h5 fw-bold mb-3">The perfect everyday scent!</h3>
-                    <p class="text-secondary w-75">
-                        I didn't expect to like this as much as I do, but it's quickly become one of my most reached for scents. The opening is bright without being sharp, and it settles into a warm, smooth base that lasts all day on my skin. What I enjoy most is how easy it is to wear—interesting enough to feel special, but not so heavy that it takes over a room ...
-                    </p>
-                </div>
-            </div>
-
-            <!-- Review 2 -->
-            <div class="row align-items-start">
-                <!--Image-->
-                <div class="col-3">
-                    <img src="https://loremflickr.com/350/350/perfume" alt="Perfume" class="img-fluid rounded shadow-sm">
-                </div>
-                <!--Rating-->
-                <div class="col-8 ps-4">
-                    <div class="mb-2">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <!--Review title and text-->
-                    <h3 class="h5 fw-bold mb-3">The perfect everyday scent!</h3>
-                    <p class="text-secondary w-75">
-                        I didn't expect to like this as much as I do, but it's quickly become one of my most reached for scents. The opening is bright without being sharp, and it settles into a warm, smooth base that lasts all day on my skin. What I enjoy most is how easy it is to wear—interesting enough to feel special, but not so heavy that it takes over a room ...
-                    </p>
-                </div>
-            </div>
-
-            <!-- See all reviews link -->
+            <!-- See all reviews link (non-functional) -->
             <div class="text-end mt-5">
                 <a href="#" class="text-dark text-decoration-none">
                     See all reviews <i class="fa-solid fa-arrow-right"></i>
@@ -226,7 +163,7 @@ require_once 'assets/includes/header.php';
         </div>
     </section>
 
-    <!--Top perfume notes section-->
+    <!--Top perfume notes section (non-functional) -->
     <section class="bg-red">
         <div class="row g-0 m-0 top-notes-row">
             <div class="col-6 text-white d-flex flex-column align-items-start pt-5 ps-5">
@@ -253,7 +190,7 @@ require_once 'assets/includes/header.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!--Form with profile image upload, name, age, pronouns, and bio-->
-                <form action="assets/functions/insert.php" method="post" enctype="multipart/form-data">
+                <form action="assets/functions/insert-profile.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="profile_image" class="form-label">Profile Image</label>

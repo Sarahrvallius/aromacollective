@@ -2,6 +2,10 @@
 //includes database connection
 require_once __DIR__ . '/../config/db.php';
 
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 $loggedInUserId = isset($_SESSION['user_id']) ? (int) $_SESSION['user_id'] : 0;
 
 // selected perfume from the library page

@@ -77,7 +77,7 @@ require_once 'assets/includes/header.php';
                                 $reviewProfileImage = 'profiles/placeholder-img.svg';
                             }
                             ?>
-                            <div class="col-12 col-lg-8">
+                            <div class="col-12 col-lg-8" id="review-<?php echo (int) $review['id']; ?>">
                                 <div class="border rounded-4 bg-white p-4">
                                     <div class="d-flex gap-3 align-items-start">
                                         <?php echo '<img src="assets/images/' . $reviewProfileImage . '" alt="Profile image" class="rounded-circle object-fit-cover flex-shrink-0 review-profile-image">'; ?>
