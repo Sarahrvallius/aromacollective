@@ -1,6 +1,8 @@
 <?php
-require_once 'assets/config/db.php'; // inkluderar databasuppkoppling
-require_once 'assets/includes/header.php'; //includes header
+// Includes db connection
+require_once 'assets/config/db.php'; 
+// Includes header
+require_once 'assets/includes/header.php'; 
 ?>
 
 <main class="bg-offwhite">

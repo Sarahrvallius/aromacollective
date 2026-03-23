@@ -1,9 +1,9 @@
 <?php
-// show errors for debugging
+// Shows errors for debugging
 require_once 'assets/includes/display_errors.php';
-//includes database connection
+// Includes database connection
 require_once 'assets/config/db.php';
-// includes header
+// Includes header
 require_once 'assets/includes/header.php';
 // SELECT (fetch) all profile data
 require_once 'assets/functions/select-profile.php';
@@ -177,7 +177,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
             <div class="col-6 h-100 p-0">
-                <img src="assets/images/notes-sea.webp" alt="Ocean waves" class="w-100 h-100 object-fit-cover">
+                <img src="assets/images/profile-notes-sea.webp" alt="Ocean waves" class="w-100 h-100 object-fit-cover">
             </div>
         </div>
     </section>
