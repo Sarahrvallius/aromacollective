@@ -4,7 +4,7 @@ require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
 //register information to database
-require_once 'assets/functions/insert.php';
+require_once 'assets/functions/insert-add.php';
 // inkluderar header
 require_once 'assets/includes/header.php';
 ?>
