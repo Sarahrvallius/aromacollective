@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                 <div class="col-12 col-md-6"></div>
                 <div class="col-12 col-md-6 px-5 d-flex align-items-center">
                     <div class="w-100 ps-3 pe-4 mt-5 pt-5">
-                        <h2 class="text-white fw-normal lh-base fs-6 mt-4 mb-4">Your signature scent starts here.<br>Join a community built for fragrance lovers</h2>
+                        <h2 class="text-white fw-normal lh-base fs-6 mt-4 mb-4">Finding your signature scent starts here.<br>Join a community built for fragrance lovers</h2>
                         <a href="add.php" class="btn btn-outline-light px-4 py-3 rounded-2 fw-semibold">Join the Community</a>
                     </div>
                 </div>
