@@ -1,7 +1,7 @@
 <!-- SUCCESS OR ERROR MESSAGES when logging in/out -->
 
 
-<?php 
+<?php
 //includes database connection
 require_once __DIR__ . '/../config/db.php';
 
@@ -39,6 +39,13 @@ if (isset($_GET['action'])) {
             // display logout message
             echo '<div class="alert alert-info text-center mb-0" role="alert">
                         You have been logged out.
+                      </div>';
+            break;
+
+        case 'account_created':
+            // display account creation success message
+            echo '<div class="alert alert-success text-center mb-0" role="alert">
+                        Welcome! Your account has been created successfully.
                       </div>';
             break;
     }

@@ -7,28 +7,13 @@ require_once 'assets/config/db.php';
 require_once 'assets/functions/insert-add.php';
 // inkluderar header
 require_once 'assets/includes/header.php';
+require_once 'assets/functions/notifications.php';
 ?>
 
 <!-- JOIN THE COMMUNITY SECTION -->
 
 <main class="bg-offwhite" class="container">
 
-    <?php //message if account created successfully
-    // check if an action is set
-    if (isset($_GET['action'])) {
-
-        //check wich action is set
-        switch ($_GET['action']) {
-            case 'success':
-
-                // display success message
-                echo '<div class="alert alert-success text-center" role="alert">
-                        Account created successfully! You can now <a href="signin.php" class="alert-link">log in</a>.
-                      </div>';
-                break;
-        }
-    }
-    ?>
 
     <!-- Join the Community form -->
     <div class="row min-vh-100 justify-content-center align-items-center py-5">
