@@ -186,7 +186,7 @@ if (!isset($_SESSION['user_id'])) {
     </section>
 
     <!-- Edit profile modal -->
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editProfileModal" role="dialog" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-offwhite">
                 <!--Header with title and close button-->
