@@ -1,22 +1,10 @@
 /* ======================================
    GLOBAL STYLES
 ====================================== */
-html,
-body {
-    height: 100%;
-}
 
-/* Social media links in footer hover effect */
-.social-link:hover {
-    opacity: 0.6;
-}
+/* HEADER */
 
-/* Custom width for divider in footer */
-.divider-width {
-    width: 35%;
-}
-
-/* Styling for dropdown in header */
+/* Styling for dropdown */
 .profile-hover-dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -27,7 +15,21 @@ body {
     color: #fff;
 }
 
-/* Perfume cards transition effect and dimensions */
+/* FOOTER */
+
+/* Social media links hover effect */
+.social-link:hover {
+    opacity: 0.6;
+}
+
+/* Custom width for divider line */
+.divider-width {
+    width: 35%;
+}
+
+/* PERFUME CARDS - used in library, profile and index */
+
+/* Transition effect */
 .perfume-card {
     transition: transform 0.2s ease;
 }
@@ -36,6 +38,7 @@ body {
     transform: translateY(-3px);
 }
 
+/* Image dimensions */
 .perfume-image {
     aspect-ratio: 3 / 4;
     object-fit: cover;
@@ -152,6 +155,7 @@ button {
     LIBRARY.PHP
 ====================================== */
 
+/* Perfume name styling */
 .library-perfume-name {
     font-size: 0.75rem;
     letter-spacing: 1px;

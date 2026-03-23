@@ -1,11 +1,14 @@
 <?php
-// require_once 'assets/config/db.php'; // avkommentera när databasen funkar
-require_once 'assets/includes/header.php'; // includes header
+// Includes db connection
+require_once 'assets/config/db.php'; 
+// Includes header
+require_once 'assets/includes/header.php'; 
+// Includes functions to select top perfumes 
 require_once 'assets/functions/select-top-perfumes.php';
+// Includes notifications
 require_once 'assets/functions/notifications.php';
 
 ?>
-
 
 <main class="bg-offwhite">
     <!-- Hero section-->
@@ -23,7 +26,7 @@ require_once 'assets/functions/notifications.php';
         </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- How it works-section -->
     <section class="py-5">
         <div class="container">
             <div class="row align-items-start gy-5">
@@ -67,7 +70,7 @@ require_once 'assets/functions/notifications.php';
         </div>
     </section>
 
-    <!-- TRENDING -->
+    <!-- Trending section -->
     <section class="bg-red py-5">
         <div class="container">
             <div class="row align-items-center gy-4">
@@ -78,10 +81,10 @@ require_once 'assets/functions/notifications.php';
                     </p>
                 </div>
 
-                <!-- 3 most popular perfumes -->
+                <!-- 3 most popular perfumes (highest average rating) -->
                 <div class="col-lg-9">
                     <div class="row text-center gy-4">
-                        <!-- Loop through perfumes with highest rating and display them -->
+                        <!-- Loop through perfumes with highest average rating and display them -->
                         <?php
                         foreach ($topPerfumes as $perfume) {
                             echo '<div class="col-md-4">';
@@ -102,7 +105,7 @@ require_once 'assets/functions/notifications.php';
         </div>
     </section>
 
-    <!-- COMMUNITY -->
+    <!-- Testamonials -->
     <section>
         <div class="container-fluid px-0">
             <div class="row g-0">
@@ -111,7 +114,7 @@ require_once 'assets/functions/notifications.php';
                         <h2 class="fs-1">Community Voices</h2>
                         <div class="border-top border-1 border-dark w-75 mb-4"></div>
 
-                        <!-- Carousel with 3 reviews from users -->
+                        <!-- Carousel with 3 testamonials from users -->
                         <div id="communityVoicesCarousel" class="carousel carousel-dark slide" data-bs-ride="false" data-bs-interval="false">
                             <div class="carousel-inner community-carousel-inner">
                                 <div class="carousel-item active">
