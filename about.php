@@ -5,6 +5,8 @@ require_once 'assets/config/db.php';
 require_once 'assets/includes/header.php'; 
 ?>
 
+<!-- ABOUT US PAGE -->
+
 <main class="bg-offwhite">
     <!-- Hero section-->
     <section class="pt-4 pb-0 bg-beige">
@@ -26,6 +28,7 @@ require_once 'assets/includes/header.php';
     <!-- Intro paragraph-->
     <section>
         <div class="container p-5">
+            <h2 class="visually-hidden">About Aroma Collective</h2>
             <p class="font-heading fs-5 pt-5 pb-5">
                 Aroma Collective was founded to bring perfume lovers
                 together in one vibrant, shared space. Our mission
@@ -64,7 +67,7 @@ require_once 'assets/includes/header.php';
                     <a href="library.php" class="btn btn-outline-light px-4 py-3 rounded-2 fw-semibold">Explore the Library</a>
                 </div>
             </div>
-            
+
             <!-- Image Carousel -->
             <div class="col-6 p-0">
                 <div id="aboutInfoCarousel" class="carousel slide">
@@ -91,6 +94,7 @@ require_once 'assets/includes/header.php';
 
     <!-- Quote over image -->
     <section class="position-relative mt-5 pt-5">
+        <h2 class="visually-hidden">Founder Quote</h2>
         <img src="assets/images/aboutus-quote.webp" alt="Woman staring into camera with a barren landscape in the background." class="w-100 img-cover d-block">
         <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4 w-100">
             <p class="font-heading fs-2 mt-5 mb-2">"Fragrance is one of the few art forms we carry with us.<br>

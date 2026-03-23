@@ -20,7 +20,9 @@ $isProfileActive = $currentPage === 'profile.php';
 $isSigninActive = $currentPage === 'signin.php';
 $isSignupActive = $currentPage === 'add.php';
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+    
 <head>
     <meta charset="utf-8">
     <title>Aroma Collective</title>
