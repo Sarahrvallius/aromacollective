@@ -61,7 +61,7 @@ if (isset($_POST['save_profile'])) {
         $sql = 'INSERT INTO profiles (user_id, display_name, age, pronouns, bio, profile_image) VALUES (:user_id, :display_name, :age, :pronouns, :bio, :profile_image)';
     }
 
-   // Prepare query and bind values
+    // Prepare query and bind values
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindValue(':display_name', $display_name);

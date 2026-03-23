@@ -131,48 +131,49 @@ require_once 'assets/includes/header.php';
 
                                         <div class="w-100">
 
-                                        <!-- display_name from profile -->
-                                        <div class="fw-semibold mb-1">
-                                            <?php echo htmlspecialchars($review['display_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
-                                        </div>
-
-                                        <!-- rating -->
-                                        <div class="mb-2">
-                                            <?php echo renderStars($review['rating']); ?>
-                                        </div>
-
-                                        <!-- review title under stjärnorna -->
-                                        <?php if (!empty($review['review_title'])): ?>
-                                            <div class="fw-bold mb-2">
-                                                <?php echo htmlspecialchars($review['review_title'], ENT_QUOTES, 'UTF-8'); ?>
+                                            <!-- display_name from profile -->
+                                            <div class="fw-semibold mb-1">
+                                                <?php echo htmlspecialchars($review['display_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
                                             </div>
-                                        <?php endif; ?>
 
-                                        <!-- review text -->
-                                        <p class="mb-3">
-                                            <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
-                                        </p>
+                                            <!-- rating -->
+                                            <div class="mb-2">
+                                                <?php echo renderStars($review['rating']); ?>
+                                            </div>
 
-                                        <!-- edit & delete buttons -->
-                                       <?php // only the review owner can edit or delete ?>
-                                       <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
-                                         <div class="d-flex gap-2">
+                                            <!-- review title under stjärnorna -->
+                                            <?php if (!empty($review['review_title'])): ?>
+                                                <div class="fw-bold mb-2">
+                                                    <?php echo htmlspecialchars($review['review_title'], ENT_QUOTES, 'UTF-8'); ?>
+                                                </div>
+                                            <?php endif; ?>
 
-                                             <a
-                                              href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
-                                             class="btn btn-sm btn-outline-dark">
-                                             Edit
-                                             </a>
+                                            <!-- review text -->
+                                            <p class="mb-3">
+                                                <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
+                                            </p>
 
-                                             <a
-                                             href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
-                                             class="btn btn-sm btn-outline-danger"
-                                             onclick="return confirm('Are you sure you want to delete this review?');">
-                                            Delete
-                                           </a>
+                                            <!-- edit & delete buttons -->
+                                            <?php // only the review owner can edit or delete 
+                                            ?>
+                                            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
+                                                <div class="d-flex gap-2">
 
-                                           </div>
-                                           <?php endif; ?>
+                                                    <a
+                                                        href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&edit_review=<?php echo (int) $review['id']; ?>#write-review"
+                                                        class="btn btn-sm btn-outline-dark">
+                                                        Edit
+                                                    </a>
+
+                                                    <a
+                                                        href="perfumes.php?perfume=<?php echo urlencode($perfume['slug']); ?>&delete_review=<?php echo (int) $review['id']; ?>"
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this review?');">
+                                                        Delete
+                                                    </a>
+
+                                                </div>
+                                            <?php endif; ?>
 
                                         </div>
                                     </div>
@@ -214,12 +215,12 @@ require_once 'assets/includes/header.php';
                             <!-- show error if something is missing -->
                             <?php if ($error !== ''): ?>
                                 <div class="alert alert-danger mb-3">
-                                    <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
+                                    <?php echo htmlspecialchars($error); ?>
                                 </div>
                             <?php endif; ?>
 
                             <!-- form -->
-                            <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>#write-review">
+                            <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug']); ?>#write-review">
 
                                 <!-- hidden id if editing -->
                                 <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
@@ -232,7 +233,7 @@ require_once 'assets/includes/header.php';
                                         name="review_title"
                                         class="form-control"
                                         placeholder="Title your review"
-                                        value="<?php echo htmlspecialchars($editReview['review_title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                                        value="<?php echo htmlspecialchars($editReview['review_title'] ?? ''); ?>">
                                 </div>
 
                                 <!-- rating -->
