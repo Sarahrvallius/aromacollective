@@ -97,15 +97,18 @@ $filteredPerfumes = $stmt->fetchAll();
         </div>
         <!-- Perfume pages navigation (non functional) -->
         <section class="bg-gray">
-        <div class="container pb-4 pt-3 d-flex justify-content-center gap-2">
-            <a href="#"><i class="fa-solid fa-angle-left fs-5 text-body-tertiary"></i></a>
-            <a href="#" class="text-dark small fw-bold text-decoration-none">1</a>
-            <a href="#" class="text-dark small text-decoration-none">2</a>
-            <a href="#" class="text-dark small text-decoration-none">3</a>
-            <p class="text-dark small">...</p>
-            <a href="#" class="text-dark small text-decoration-none">46</a>
-            <a href="#"><i class="fa-solid fa-angle-right fs-5 text-dark"></i></a>
-        </div>
+            <div class="container pb-4 pt-3">
+                <h2 class="visually-hidden">Pagination for perfume list</h2>
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="#"><i class="fa-solid fa-angle-left fs-5 text-body-tertiary"></i></a>
+                    <a href="#" class="text-dark small fw-bold text-decoration-none">1</a>
+                    <a href="#" class="text-dark small text-decoration-none">2</a>
+                    <a href="#" class="text-dark small text-decoration-none">3</a>
+                    <p class="text-dark small">...</p>
+                    <a href="#" class="text-dark small text-decoration-none">46</a>
+                    <a href="#"><i class="fa-solid fa-angle-right fs-5 text-dark"></i></a>
+                </div>
+            </div>
         </section>
     </section>
 </main>

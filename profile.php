@@ -7,6 +7,8 @@ require_once 'assets/config/db.php';
 require_once 'assets/includes/header.php';
 // SELECT (fetch) all profile data
 require_once 'assets/functions/select-profile.php';
+// includes notifications for messages
+require_once 'assets/functions/notifications.php';
 
 // Check if user is logged in, if not redirect to signin page
 if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -19,6 +21,7 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <main>
+
     <!--Profile section-->
     <section class="bg-offwhite py-5">
         <div class="container">
@@ -183,7 +186,7 @@ if (!isset($_SESSION['user_id'])) {
     </section>
 
     <!-- Edit profile modal -->
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editProfileModal" role="dialog" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-offwhite">
                 <!--Header with title and close button-->
