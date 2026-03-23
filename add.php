@@ -4,14 +4,14 @@ require_once 'assets/includes/display_errors.php';
 //includes database connection
 require_once 'assets/config/db.php';
 //register information to database
-require_once 'assets/functions/insert.php';
+require_once 'assets/functions/insert-add.php';
 // inkluderar header
 require_once 'assets/includes/header.php';
 ?>
 
 <!-- JOIN THE COMMUNITY SECTION -->
 
-<main class="bg-offwhite" class="container"> 
+<main class="bg-offwhite" class="container">
 
     <?php //message if account created successfully
     // check if an action is set
@@ -29,8 +29,8 @@ require_once 'assets/includes/header.php';
         }
     }
     ?>
-    
-     <!-- Join the Community form -->
+
+    <!-- Join the Community form -->
     <div class="row min-vh-100 justify-content-center align-items-center py-5">
         <div class="col-12 col-md-8 col-lg-6">
 
