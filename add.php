@@ -12,7 +12,7 @@ require_once 'assets/functions/notifications.php';
 
 <!-- JOIN THE COMMUNITY SECTION -->
 
-<main class="bg-offwhite container">
+<main class="bg-offwhite">
 
 
     <!-- Join the Community form -->
