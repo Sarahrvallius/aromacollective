@@ -180,5 +180,4 @@ function renderStars($rating)
 
     return $output;
 }
-// includes header
-require_once 'assets/includes/header.php';
+

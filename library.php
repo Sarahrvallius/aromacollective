@@ -55,7 +55,7 @@ $filteredPerfumes = $stmt->fetchAll();
                             class="form-control"
                             type="search"
                             name="search"
-                            value="<?php echo htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); ?>"
+                            value="<?php echo $search; ?>"
                             placeholder="Search by name, brand, or notes...">
                         <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
@@ -73,15 +73,15 @@ $filteredPerfumes = $stmt->fetchAll();
                             <div class="col-6 col-md-3 col-lg-2">
                                 <!-- link to single perfume page -->
                                 <a
-                                    href="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug'], ENT_QUOTES, 'UTF-8'); ?>"
+                                    href="perfumes.php?perfume=<?php echo $perfume['slug']; ?>"
                                     class="perfume-card d-block text-decoration-none">
                                     <img
-                                        src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
-                                        alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        src="<?php echo $perfume['image']; ?>"
+                                        alt="<?php echo $perfume['name']; ?>"
                                         class="perfume-image img-fluid w-100 d-block">
                                     <!-- show perfume name -->
                                     <div class="library-perfume-name text-dark text-uppercase text-center mt-2">
-                                        <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
+                                        <?php echo $perfume['name']; ?>
                                     </div>
                                 </a>
                             </div>
@@ -95,7 +95,8 @@ $filteredPerfumes = $stmt->fetchAll();
                 </div>
             </div>
         </div>
-        <!-- Perfume pages navigation (non functional) -->
+
+        <!-- Perfume pages navigation -->
         <section class="bg-gray">
             <div class="container pb-4 pt-3">
                 <h2 class="visually-hidden">Pagination for perfume list</h2>

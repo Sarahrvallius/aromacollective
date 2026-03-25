@@ -9,7 +9,7 @@ $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
 $profile = $stmt->fetch();
 
-// Fetch user's name from users table
+// Fetch user's full name from users table
 $sql = 'SELECT firstname, lastname FROM users WHERE id = :user_id LIMIT 1';
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);

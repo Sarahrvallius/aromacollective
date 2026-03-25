@@ -26,23 +26,23 @@ require_once 'assets/includes/header.php';
             <div class="text-center mb-4">
                 <!-- brand -->
                 <div class="text-uppercase mb-2">
-                    <?php echo htmlspecialchars($perfume['brand'], ENT_QUOTES, 'UTF-8'); ?>
+                    <?php echo $perfume['brand']; ?>
                 </div>
 
                 <!-- name -->
                 <h1 class="fs-1 mb-2">
-                    <?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>
+                    <?php echo $perfume['name']; ?>
                 </h1>
 
                 <!-- short description -->
                 <p class="w-50 mx-auto mb-3">
-                    <?php echo htmlspecialchars($perfume['subtitle'], ENT_QUOTES, 'UTF-8'); ?>
+                    <?php echo $perfume['subtitle']; ?>
                 </p>
 
                 <!-- category + number of reviews -->
                 <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
                     <span class="rounded-pill px-3 py-1 text-white small bg-beige px-3 py-1">
-                        <?php echo htmlspecialchars($perfume['category'], ENT_QUOTES, 'UTF-8'); ?>
+                        <?php echo $perfume['category']; ?>
                     </span>
                     <span><?php echo $reviewCount; ?> reviews</span>
                 </div>
@@ -51,8 +51,8 @@ require_once 'assets/includes/header.php';
             <!-- perfume image -->
             <div class="text-center mb-4">
                 <img
-                    src="<?php echo htmlspecialchars($perfume['image'], ENT_QUOTES, 'UTF-8'); ?>"
-                    alt="<?php echo htmlspecialchars($perfume['name'], ENT_QUOTES, 'UTF-8'); ?>"
+                    src="<?php echo $perfume['image']; ?>"
+                    alt="<?php echo $perfume['name']; ?>"
                     class="perfumes-hero-image rounded-4 img-fluid">
             </div>
 
@@ -71,7 +71,7 @@ require_once 'assets/includes/header.php';
 
                         <!-- description text -->
                         <p class="mb-4">
-                            <?php echo htmlspecialchars($perfume['description'], ENT_QUOTES, 'UTF-8'); ?>
+                            <?php echo $perfume['description']; ?>
                         </p>
 
                         <!-- perfume notes -->
@@ -79,15 +79,15 @@ require_once 'assets/includes/header.php';
                             <h2 class="h4 mb-3">Notes</h2>
                             <p class="mb-2">
                                 <strong>Top notes:</strong>
-                                <?php echo htmlspecialchars($perfume['top_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                                <?php echo $perfume['top_notes']; ?>
                             </p>
                             <p class="mb-2">
                                 <strong>Heart notes:</strong>
-                                <?php echo htmlspecialchars($perfume['heart_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                                <?php echo $perfume['heart_notes']; ?>
                             </p>
                             <p class="mb-0">
                                 <strong>Base notes:</strong>
-                                <?php echo htmlspecialchars($perfume['base_notes'], ENT_QUOTES, 'UTF-8'); ?>
+                                <?php echo $perfume['base_notes']; ?>
                             </p>
                         </div>
 
@@ -133,7 +133,7 @@ require_once 'assets/includes/header.php';
 
                                             <!-- display_name from profile -->
                                             <div class="fw-semibold mb-1">
-                                                <?php echo htmlspecialchars($review['display_name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
+                                                <?php echo $review['display_name'] ?? ''; ?>
                                             </div>
 
                                             <!-- rating -->
@@ -144,18 +144,16 @@ require_once 'assets/includes/header.php';
                                             <!-- review title under stjärnorna -->
                                             <?php if (!empty($review['review_title'])): ?>
                                                 <div class="fw-bold mb-2">
-                                                    <?php echo htmlspecialchars($review['review_title'], ENT_QUOTES, 'UTF-8'); ?>
+                                                    <?php echo $review['review_title']; ?>
                                                 </div>
                                             <?php endif; ?>
 
                                             <!-- review text -->
                                             <p class="mb-3">
-                                                <?php echo htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8'); ?>
+                                                <?php echo $review['review_text']; ?>
                                             </p>
 
                                             <!-- edit & delete buttons -->
-                                            <?php // only the review owner can edit or delete 
-                                            ?>
                                             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
                                                 <div class="d-flex gap-2">
 
@@ -197,10 +195,7 @@ require_once 'assets/includes/header.php';
             </section>
 
             <!-- review form -->
-            <?php
-            // check if user is logged in
-            if (isset($_SESSION['user_id'])):
-            ?>
+            <?php if (isset($_SESSION['user_id'])): ?>
 
                 <!-- show form if logged in -->
                 <section class="row justify-content-center" id="write-review">
@@ -215,12 +210,12 @@ require_once 'assets/includes/header.php';
                             <!-- show error if something is missing -->
                             <?php if ($error !== ''): ?>
                                 <div class="alert alert-danger mb-3">
-                                    <?php echo htmlspecialchars($error); ?>
+                                    <?php echo $error; ?>
                                 </div>
                             <?php endif; ?>
 
                             <!-- form -->
-                            <form method="POST" action="perfumes.php?perfume=<?php echo htmlspecialchars($perfume['slug']); ?>#write-review">
+                            <form method="POST" action="perfumes.php?perfume=<?php echo $perfume['slug']; ?>#write-review">
 
                                 <!-- hidden id if editing -->
                                 <input type="hidden" name="edit_id" value="<?php echo $editReview ? (int) $editReview['id'] : 0; ?>">
@@ -233,7 +228,7 @@ require_once 'assets/includes/header.php';
                                         name="review_title"
                                         class="form-control"
                                         placeholder="Title your review"
-                                        value="<?php echo htmlspecialchars($editReview['review_title'] ?? ''); ?>">
+                                        value="<?php echo $editReview['review_title'] ?? ''; ?>">
                                 </div>
 
                                 <!-- rating -->
@@ -256,7 +251,7 @@ require_once 'assets/includes/header.php';
                                         name="review_text"
                                         class="form-control"
                                         rows="5"
-                                        placeholder="Write your thoughts about this fragrance..."><?php echo htmlspecialchars($editReview['review_text'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                                        placeholder="Write your thoughts about this fragrance..."><?php echo $editReview['review_text'] ?? ''; ?></textarea>
                                 </div>
 
                                 <!-- buttons -->
